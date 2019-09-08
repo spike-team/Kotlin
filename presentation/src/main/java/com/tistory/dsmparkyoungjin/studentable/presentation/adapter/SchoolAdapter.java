@@ -3,6 +3,7 @@ package com.tistory.dsmparkyoungjin.studentable.presentation.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.presentation.entity.School;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder> {
 
-    private List<School> mItems;
+    private ArrayList<School> mItems;
 
-    public SchoolAdapter(List<School> items) { mItems = items; }
+    public SchoolAdapter(ArrayList<School> items) { mItems = items; }
 
     @NonNull
     @Override
@@ -26,7 +27,7 @@ public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull SchoolAdapter.ViewHolder holder, int position) {
-
+        holder.bind();
     }
 
     @Override
@@ -34,17 +35,19 @@ public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder
         return mItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
-        View mView;
+        private View mView;
+        private School mItem = mItems.get(getAdapterPosition() + 1);
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
         }
 
-        public void bind() {
-
+        void bind() {
+            TextView nameSchool = mView.findViewById(R.id.tv_nameSchool);
+            nameSchool.setText(mItem.getName());
         }
     }
 }
