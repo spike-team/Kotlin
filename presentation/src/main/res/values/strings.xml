@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">StudenTable</string>
     <string name="app_title">StudenTable</string>
+    <string name="search_school">학교 검색</string>
+    <string name="do_search">검색하기</string>
+    <string name="do_next">다음으로</string>
+    <string name="text_grade">학년</string>
+    <string name="text_class">반</string>
+    <string name="do_save">저장하기</string>
 </resources>

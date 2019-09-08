@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1033204306541",
+    "firebase_url": "https://studentable-744c2.firebaseio.com",
+    "project_id": "studentable-744c2",
+    "storage_bucket": "studentable-744c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033204306541:android:7b77c253296f9e99c5e564",
+        "android_client_info": {
+          "package_name": "com.tistory.dsmparkyoungjin.studentable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033204306541-gd7hc3h0cbphuj1ftqdlo28dj65b0kh9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCkdGzezODhkW4bX5cPFYutpXhgmZ7Yq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033204306541-gd7hc3h0cbphuj1ftqdlo28dj65b0kh9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
