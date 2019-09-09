@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.ui.MainActivity" />
+        <activity android:name=".presentation.ui.main.base.MainActivity" />
 
         <service
             android:name=".service.ChangeTimeMessagingService"

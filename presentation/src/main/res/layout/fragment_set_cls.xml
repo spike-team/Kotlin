@@ -48,10 +48,10 @@
             app:stepperActionsDisabledColor="@color/colorBlackTrue"
             app:stepperAllowNegative="true"
             app:stepperAllowPositive="true"
-            app:stepperBackgroundColor="@color/colorGrayLight"
+            app:stepperBackgroundColor="@color/colorGray"
             app:stepperButtonColor="@color/colorPrimary"
             app:stepperTextColor="@color/colorWhiteTrue"
-            app:stepperTextSize="8sp" />
+            app:stepperTextSize="6sp" />
 
     </LinearLayout>
 
@@ -82,10 +82,10 @@
             app:stepperActionsDisabledColor="@color/colorBlackTrue"
             app:stepperAllowNegative="true"
             app:stepperAllowPositive="true"
-            app:stepperBackgroundColor="@color/colorGrayLight"
+            app:stepperBackgroundColor="@color/colorGray"
             app:stepperButtonColor="@color/colorPrimary"
             app:stepperTextColor="@color/colorWhiteTrue"
-            app:stepperTextSize="8sp" />
+            app:stepperTextSize="6sp" />
 
     </LinearLayout>
 

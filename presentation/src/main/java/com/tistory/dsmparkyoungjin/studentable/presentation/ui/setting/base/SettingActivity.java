@@ -2,17 +2,14 @@ package com.tistory.dsmparkyoungjin.studentable.presentation.ui.setting.base;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
-import com.tistory.dsmparkyoungjin.studentable.presentation.ui.MainActivity;
+import com.tistory.dsmparkyoungjin.studentable.presentation.ui.main.base.MainActivity;
 import com.tistory.dsmparkyoungjin.studentable.presentation.ui.setting.search.SearchSchFragment;
 import com.tistory.dsmparkyoungjin.studentable.presentation.ui.setting.set.SetClsFragment;
 
