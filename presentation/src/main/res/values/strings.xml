@@ -10,4 +10,6 @@
     <string name="text_breakfast">아침</string>
     <string name="text_lunch">점심</string>
     <string name="text_dinner">저녁</string>
+    <string name="text_setSchool">학교 설정하기</string>
+    <string name="text_setClass">학년 반 설정하기</string>
 </resources>

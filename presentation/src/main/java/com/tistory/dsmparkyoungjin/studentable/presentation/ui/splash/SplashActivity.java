@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
                 });
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(getApplication(), SettingActivity.class));
+            startActivity(new Intent(getApplication(), SettingActivity.class).putExtra("EditType", "first"));
             finish();
         }, 800);
     }

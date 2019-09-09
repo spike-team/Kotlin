@@ -3,6 +3,7 @@ package com.tistory.dsmparkyoungjin.studentable.presentation.ui.setting.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +23,7 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        replaceFragment(new SearchSchFragment());
+        initActivity();
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar_center_title);
         final TextView title = getSupportActionBar().getCustomView().findViewById(R.id.tv_title);
@@ -40,5 +41,21 @@ public class SettingActivity extends AppCompatActivity {
     public void setClass() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+
+    public void initActivity() {
+        switch (Objects.requireNonNull(getIntent().getStringExtra("EditType"))) {
+            case "class":
+                selectSchool();
+                break;
+            case "all":
+                replaceFragment(new SearchSchFragment());
+                break;
+            case "first":
+                replaceFragment(new SearchSchFragment());
+                break;
+            default:
+                Toast.makeText(this, "오류", Toast.LENGTH_SHORT).show();
+        }
     }
 }
