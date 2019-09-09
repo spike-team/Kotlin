@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.main.base.MainActivity">
 
+    <FrameLayout
+        android:id="@+id/fl_container_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/fab_menu"
         android:layout_width="64dp"
@@ -49,8 +54,6 @@
             app:fab_colorPressed="@color/colorPrimary"
             app:fab_icon="@drawable/ic_settings_black_24dp" />
 
-
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
-
+    
 </androidx.constraintlayout.widget.ConstraintLayout>

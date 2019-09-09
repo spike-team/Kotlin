@@ -30,7 +30,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     public void replaceFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_container, fragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_container_setting, fragment).commit();
     }
 
     public void selectSchool() {

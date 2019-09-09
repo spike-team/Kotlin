@@ -7,4 +7,7 @@
     <string name="text_grade">학년</string>
     <string name="text_class">반</string>
     <string name="do_save">저장하기</string>
+    <string name="text_breakfast">아침</string>
+    <string name="text_lunch">점심</string>
+    <string name="text_dinner">저녁</string>
 </resources>

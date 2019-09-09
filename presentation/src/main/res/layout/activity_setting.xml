@@ -6,7 +6,7 @@
     tools:context=".presentation.ui.setting.base.SettingActivity">
 
     <FrameLayout
-        android:id="@+id/fl_container"
+        android:id="@+id/fl_container_setting"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
