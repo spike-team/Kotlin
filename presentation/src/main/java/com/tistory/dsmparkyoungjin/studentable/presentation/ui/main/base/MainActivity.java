@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.presentation.ui.main.meal.MealFragment;
 import com.tistory.dsmparkyoungjin.studentable.presentation.ui.main.time.TimeFragment;
+import com.tistory.dsmparkyoungjin.studentable.presentation.ui.notification.NotificationActivity;
 import com.tistory.dsmparkyoungjin.studentable.presentation.ui.reset.ResetActivity;
 
 import java.util.Objects;
@@ -36,7 +37,15 @@ public class MainActivity extends AppCompatActivity {
         );
 
         findViewById(R.id.fab_setting).setOnClickListener(v ->
-            startActivity(new Intent(this, ResetActivity.class))
+                startActivity(new Intent(this, ResetActivity.class))
+        );
+
+        findViewById(R.id.fab_notification).setOnClickListener(v ->
+                startActivity(new Intent(this, NotificationActivity.class))
+        );
+
+        findViewById(R.id.fab_time).setOnClickListener(
+                v -> replaceFragment(mTimeFragment)
         );
     }
 

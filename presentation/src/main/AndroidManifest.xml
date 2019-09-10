@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".presentation.ui.reset.ResetActivity" />
-        <activity android:name=".presentation.ui.notice.NotificationActivity" />
+        <activity android:name=".presentation.ui.notification.NotificationActivity" />
         <activity android:name=".presentation.ui.setting.base.SettingActivity" />
         <activity
             android:name=".presentation.ui.splash.SplashActivity"
