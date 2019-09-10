@@ -34,7 +34,7 @@
 
 ## Android Preview
 
-*최종 완료 후 추가예정*
+![Storyboard](https://user-images.githubusercontent.com/48894871/64573127-237d7580-d3a5-11e9-8f6c-d42505ce4dce.png)
 
 
 
