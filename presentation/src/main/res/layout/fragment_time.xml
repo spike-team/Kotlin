@@ -11,7 +11,6 @@
         android:layout_width="312dp"
         android:layout_height="424dp"
         android:layout_marginTop="24dp"
-        android:background="#edf3fd"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_date_time">
@@ -21,7 +20,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimary" />
+                android:background="@drawable/bg_time_topleft" />
 
             <TextView
                 android:layout_width="56dp"
@@ -58,7 +57,7 @@
             <TextView
                 android:layout_width="56dp"
                 android:layout_height="32dp"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/bg_time_topright"
                 android:gravity="center"
                 android:text="@string/text_friday"
                 android:textColor="@color/colorWhiteTrue" />
@@ -80,30 +79,35 @@
             <TextView
                 android:id="@+id/tv_subject_11"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_21"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_31"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_41"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_51"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
@@ -124,30 +128,35 @@
             <TextView
                 android:id="@+id/tv_subject_12"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_22"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_32"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_42"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_52"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
@@ -168,30 +177,35 @@
             <TextView
                 android:id="@+id/tv_subject_13"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_23"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_33"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_43"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_53"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
@@ -212,30 +226,35 @@
             <TextView
                 android:id="@+id/tv_subject_14"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_24"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_34"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_44"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_54"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
@@ -256,30 +275,35 @@
             <TextView
                 android:id="@+id/tv_subject_15"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_25"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_35"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_45"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_55"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
@@ -300,30 +324,35 @@
             <TextView
                 android:id="@+id/tv_subject_16"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_26"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_36"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_46"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_56"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
@@ -336,7 +365,7 @@
             <TextView
                 android:layout_width="32dp"
                 android:layout_height="56dp"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/bg_time_bottomleft"
                 android:gravity="center"
                 android:text="@string/text_7"
                 android:textColor="@color/colorWhiteTrue" />
@@ -344,30 +373,35 @@
             <TextView
                 android:id="@+id/tv_subject_17"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_27"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_37"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_47"
                 android:layout_height="match_parent"
+                android:background="@color/colorPrimaryLight"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
                 android:id="@+id/tv_subject_57"
                 android:layout_height="match_parent"
+                android:background="@drawable/bg_time_bottomright"
                 android:gravity="center"
                 android:textColor="@color/colorBlackTrue" />
 
