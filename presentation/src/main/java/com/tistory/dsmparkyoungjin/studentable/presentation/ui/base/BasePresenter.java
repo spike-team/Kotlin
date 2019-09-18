@@ -1,7 +1,6 @@
 package com.tistory.dsmparkyoungjin.studentable.presentation.ui.base;
 
 import java.lang.ref.WeakReference;
-import java.util.Objects;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
