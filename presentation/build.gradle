@@ -45,6 +45,11 @@ dependencies {
     implementation 'androidx.work:work-runtime:2.2.0'
 
     implementation rootProject.ext.rxjava
+
+    api 'com.google.dagger:dagger-android:2.24'
+    api 'com.google.dagger:dagger-android-support:2.24'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.24'
+
     implementation project(path: ':data')
     implementation project(path: ':domain')
 }
