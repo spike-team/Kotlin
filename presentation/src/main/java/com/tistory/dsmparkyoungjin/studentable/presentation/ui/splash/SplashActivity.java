@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,17 +36,6 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                        Log.w("err", "getInstanceId failed", task.getException());
-                        return;
-                    }
-
-                    // Get new Instance ID token
-                    Log.d("device", Objects.requireNonNull(task.getResult()).getToken());
-                });
-
         GoogleSignInOptions mGSIO =
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                         .requestIdToken(getResources().getString(R.string.web_client_id))
@@ -55,11 +43,6 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
                         .build();
         GoogleSignInClient mGSIC = GoogleSignIn.getClient(this, mGSIO);
         startActivityForResult(mGSIC.getSignInIntent(), RC_SUCCESS_GOOGLE_AUTH);
-
-        new Handler().postDelayed(() -> {
-            startActivity(new Intent(getApplication(), SettingActivity.class).putExtra("EditType", "first"));
-            finish();
-        }, 800);
     }
 
     @Override
@@ -95,9 +78,24 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
                 Log.w("SplashActivity", "Google sign in failed", e);
             }
         }
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w("err", "getInstanceId failed", task.getException());
+                        return;
+                    }
+
+                    Log.d("device", Objects.requireNonNull(task.getResult()).getToken());
+                });
+
+        new Handler().postDelayed(() -> {
+            startActivity(new Intent(getApplication(), SettingActivity.class).putExtra("EditType", "first"));
+            finish();
+        }, 800);
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount mGoogleAccount) {
-        Toast.makeText(this, mGoogleAccount.getId(), Toast.LENGTH_SHORT).show();
+        //TODO use googleSignInAccount.getId
     }
 }
