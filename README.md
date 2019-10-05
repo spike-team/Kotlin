@@ -54,7 +54,7 @@ Presenter Architecture: MVP (Model View Presenter)
 
 Library
 
-- Dagger2
+- Koin
 - RxJava2
 - Retrofit2
 - Butter Knife
