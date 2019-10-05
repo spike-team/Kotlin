@@ -31,24 +31,21 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta04'
-    implementation 'com.github.DanielMartinus:Stepper-Touch:1.0.1'
-    implementation 'com.getbase:floatingactionbutton:1.10.1'
-    implementation 'me.relex:circleindicator:2.1.4'
-
-    implementation 'com.google.firebase:firebase-auth:19.0.0'
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
-    implementation 'com.google.firebase:firebase-core:17.2.0'
-    implementation 'com.google.firebase:firebase-analytics:17.2.0'
-    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation rootProject.ext.materialEdittext
+    implementation rootProject.ext.recyclerView
+    implementation rootProject.ext.stepperTouch
+    implementation rootProject.ext.fab
+    implementation rootProject.ext.circleIndicator
+    implementation rootProject.ext.firebaseAuth
+    implementation rootProject.ext.gms
+    implementation rootProject.ext.firebaseAuth
+    implementation rootProject.ext.firebaseAnalytics
+    implementation rootProject.ext.firebaseMessaging
     implementation 'androidx.work:work-runtime:2.2.0'
 
     implementation rootProject.ext.rxjava
 
-    api 'com.google.dagger:dagger-android:2.24'
-    api 'com.google.dagger:dagger-android-support:2.24'
-    annotationProcessor 'com.google.dagger:dagger-android-processor:2.24'
+    implementation rootProject.ext.koin
 
     implementation project(path: ':data')
     implementation project(path: ':domain')

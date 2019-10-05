@@ -22,11 +22,8 @@ import com.tistory.dsmparkyoungjin.studentable.presentation.ui.setting.base.Sett
 
 import java.util.Objects;
 
-import javax.inject.Inject;
-
 public class SplashActivity extends AppCompatActivity implements SplashContract.View {
 
-    @Inject
     SplashContract.Presenter mPresenter;
 
     private int RC_SUCCESS_GOOGLE_AUTH = 1001;
@@ -68,7 +65,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == RC_SUCCESS_GOOGLE_AUTH) {
+        if (requestCode == RC_SUCCESS_GOOGLE_AUTH) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
