@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.notification.NotificationActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical">
+
+        <Switch
+            android:id="@+id/swc_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="24dp"/>
+
+        <TextView
+            android:id="@+id/tv_stateSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textColor="@color/colorBlackTrue"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RelativeOverlap" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLine"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"/>
+
+        <FrameLayout
+            android:id="@+id/fl_transparency"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#44000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rv_notification" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_notification"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,2 +1,2 @@
-include ':presentation', ':data', ':domain'
+include ':app'
 rootProject.name='StudenTable'
