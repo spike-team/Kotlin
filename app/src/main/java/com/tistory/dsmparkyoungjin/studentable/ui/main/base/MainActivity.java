@@ -1,6 +1,8 @@
 package com.tistory.dsmparkyoungjin.studentable.ui.main.base;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -26,12 +28,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        replaceFragment(mMealFragment);
+        initView();
+    }
+
+    private void initView() {
+        initActionBar();
+        lastedView();
+        setOnClickFloatingActionBar();
+    }
+
+    private void initActionBar() {
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar_center_title);
         final TextView title = getSupportActionBar().getCustomView().findViewById(R.id.tv_title);
         title.setText("대덕소프트웨어마이스터고등학교 0학년 0반");
+    }
 
+    private void lastedView() {
+        SharedPreferences pref = getSharedPreferences("STUDENTABLE", Context.MODE_PRIVATE);
+        switch (pref.getString("LASTED_VIEW", "")) {
+            case "":
+            case "TIMETABLE":
+                replaceFragment(mTimeFragment);
+                break;
+            case "MEAL":
+                replaceFragment(mMealFragment);
+                break;
+        }
+    }
+
+    private void setOnClickFloatingActionBar() {
         findViewById(R.id.fab_meal).setOnClickListener(
                 v -> replaceFragment(mMealFragment)
         );
@@ -50,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void replaceFragment(Fragment fragment) {
+        SharedPreferences pref = getSharedPreferences("STUDENTABLE", Context.MODE_PRIVATE);
+        if(fragment instanceof TimeFragment)
+            pref.edit().putString("LASTED_VIEW", "TIMETABLE").apply();
+        else
+            pref.edit().putString("LASTED_VIEW", "MEAL").apply();
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_container_main, fragment).commit();
     }
 }
