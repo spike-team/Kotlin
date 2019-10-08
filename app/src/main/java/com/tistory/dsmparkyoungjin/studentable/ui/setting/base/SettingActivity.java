@@ -1,7 +1,9 @@
 package com.tistory.dsmparkyoungjin.studentable.ui.setting.base;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -19,6 +21,15 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
+        initView();
+    }
+
+    private void initView() {
+        initActionBar();
+        initFragment();
+    }
+
+    private void initFragment() {
         switch (Objects.requireNonNull(getIntent().getStringExtra("TYPE"))) {
             case "SCHOOL":
                 searchFragment();
@@ -27,6 +38,13 @@ public class SettingActivity extends AppCompatActivity {
                 setFragment();
                 break;
         }
+    }
+
+    private void initActionBar() {
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_center_title);
+        final TextView title = getSupportActionBar().getCustomView().findViewById(R.id.tv_title);
+        title.setText("설정");
     }
 
     public void searchFragment() { replaceFragment(new SearchSchFragment()); }
