@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.rengwuxian.materialedittext.MaterialEditText;
 import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.ui.setting.base.SettingActivity;
 
@@ -25,7 +27,9 @@ public class SearchSchFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_search_sch, container, false);
 
         rootView.findViewById(R.id.btn_search).setOnClickListener(v -> {
-            ((SettingActivity) Objects.requireNonNull(getActivity())).searchFragment();
+            MaterialEditText metSearchSchoolmet = rootView.findViewById(R.id.met_searchSchool);
+            String school = Objects.requireNonNull(metSearchSchoolmet.getText()).toString();
+            ((SettingActivity) Objects.requireNonNull(getActivity())).selectFragment(school);
         });
 
         return rootView;

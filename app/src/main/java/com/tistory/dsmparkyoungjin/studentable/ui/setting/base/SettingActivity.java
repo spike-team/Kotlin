@@ -30,7 +30,13 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     public void searchFragment() { replaceFragment(new SearchSchFragment()); }
-    public void selectFragment() { replaceFragment(new SelectSchFragment()); }
+    public void selectFragment(String school) {
+        Fragment selectFragment = new SelectSchFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("SCHOOL", school);
+        selectFragment.setArguments(bundle);
+        replaceFragment(selectFragment);
+    }
     public void setFragment() { replaceFragment(new SetClsFragment());}
 
     protected void replaceFragment(Fragment fragment) {
