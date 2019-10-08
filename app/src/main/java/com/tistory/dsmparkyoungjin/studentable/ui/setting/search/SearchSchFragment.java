@@ -27,8 +27,8 @@ public class SearchSchFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_search_sch, container, false);
 
         rootView.findViewById(R.id.btn_search).setOnClickListener(v -> {
-            MaterialEditText metSearchSchoolmet = rootView.findViewById(R.id.met_searchSchool);
-            String school = Objects.requireNonNull(metSearchSchoolmet.getText()).toString();
+            MaterialEditText metSearchSchool = rootView.findViewById(R.id.met_searchSchool);
+            String school = Objects.requireNonNull(metSearchSchool.getText()).toString();
             ((SettingActivity) Objects.requireNonNull(getActivity())).selectFragment(school);
         });
 
