@@ -1,5 +1,6 @@
 package com.tistory.dsmparkyoungjin.studentable.ui.main.base;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,18 +34,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         initActionBar();
-        lastedView();
+        setLastedView();
         setOnClickFloatingActionBar();
     }
 
+    @SuppressLint("SetTextI18n")
     private void initActionBar() {
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar_center_title);
         final TextView title = getSupportActionBar().getCustomView().findViewById(R.id.tv_title);
-        title.setText("대덕소프트웨어마이스터고등학교 0학년 0반");
+
+        SharedPreferences pref = getSharedPreferences("STUDENTABLE", Context.MODE_PRIVATE);
+        title.setText(pref.getString("SCHOOL", "학교 이름") + " " + pref.getString("CLASS", "학년 반"));
     }
 
-    private void lastedView() {
+    private void setLastedView() {
         SharedPreferences pref = getSharedPreferences("STUDENTABLE", Context.MODE_PRIVATE);
         switch (pref.getString("LASTED_VIEW", "")) {
             case "":
@@ -58,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setOnClickFloatingActionBar() {
+        findViewById(R.id.fab_time).setOnClickListener(
+                v -> replaceFragment(mTimeFragment)
+        );
+
         findViewById(R.id.fab_meal).setOnClickListener(
                 v -> replaceFragment(mMealFragment)
         );
@@ -68,10 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.fab_notification).setOnClickListener(v ->
                 startActivity(new Intent(this, NotificationActivity.class))
-        );
-
-        findViewById(R.id.fab_time).setOnClickListener(
-                v -> replaceFragment(mTimeFragment)
         );
     }
 

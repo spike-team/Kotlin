@@ -60,27 +60,26 @@ public class SplashActivity extends AppCompatActivity {
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 assert account != null;
-                firebaseAuthWithGoogle(account);
-                fcmDeviceCode();
+                setGoogleAccount(account);
+                setDeviceCode();
             } catch (ApiException e) {
                 Log.w("SplashActivity", "Google sign in failed", e);
             }
         }
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(getApplication(), SettingActivity.class).putExtra("EDIT", "SCHOOL"));
+            startActivity(new Intent(getApplication(), SettingActivity.class).putExtra("TYPE", "SCHOOL"));
             finish();
         }, 800);
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount mGoogleAccount) {
+    private void setGoogleAccount(GoogleSignInAccount mGoogleAccount) {
         SharedPreferences pref = getSharedPreferences(STUDENTABLE, Context.MODE_PRIVATE);
         pref.edit().putString(GOOGLE_AUTH, mGoogleAccount.getId()).apply();
     }
 
-    private void fcmDeviceCode() {
+    private void setDeviceCode() {
         SharedPreferences pref = getSharedPreferences(STUDENTABLE, Context.MODE_PRIVATE);
-
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(task -> {
                     if (!task.isSuccessful()) {
@@ -93,7 +92,6 @@ public class SplashActivity extends AppCompatActivity {
 
     private Boolean isSet() {
         SharedPreferences pref = getSharedPreferences(STUDENTABLE, Context.MODE_PRIVATE);
-        return pref.getString(DEVICE_CODE, "").isEmpty()
-                && pref.getString(GOOGLE_AUTH, "").isEmpty();
+        return !(pref.getString(GOOGLE_AUTH, "").isEmpty());
     }
 }

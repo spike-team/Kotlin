@@ -1,6 +1,9 @@
 package com.tistory.dsmparkyoungjin.studentable.ui.setting.base;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -22,6 +25,9 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
         initView();
+        SharedPreferences temp = getSharedPreferences("STUDENTABLE", Context.MODE_PRIVATE);
+        Log.d("TEST", "GOOGLEAUTH: " + temp.getString("GOOGLE_AUTH", ""));
+        Log.d("TEST", "DEVICECODE: " + temp.getString("DEVICE_CODE", ""));
     }
 
     private void initView() {

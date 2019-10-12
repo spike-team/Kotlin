@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
@@ -24,8 +25,12 @@ public class ChangeTimeMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
-        showNotification(Objects.requireNonNull(remoteMessage.getNotification()).getTitle(),
-                remoteMessage.getNotification().getBody());
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("STUDENTABLE", Context.MODE_PRIVATE);
+
+        if(pref.getBoolean("FCM_CHANGE", true)) {
+            showNotification(Objects.requireNonNull(remoteMessage.getNotification()).getTitle(),
+                    remoteMessage.getNotification().getBody());
+        }
     }
 
     private void showNotification(String title, String body) {
