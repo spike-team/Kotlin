@@ -1,10 +1,10 @@
-package com.tistory.dsmparkyoungjin.studentable.entity;
+package com.tistory.dsmparkyoungjin.studentable.data;
 
-public class School {
+public class SchoolData {
 
     private String name;
 
-    public School(String name) {
+    public SchoolData(String name) {
         this.name = name;
     }
 

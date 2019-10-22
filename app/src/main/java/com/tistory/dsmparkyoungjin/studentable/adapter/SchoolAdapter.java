@@ -9,15 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
-import com.tistory.dsmparkyoungjin.studentable.entity.School;
+import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder> {
 
-    private ArrayList<School> mItems;
+    private ArrayList<SchoolData> mItems;
 
-    public SchoolAdapter(ArrayList<School> items) { mItems = items; }
+    public SchoolAdapter(ArrayList<SchoolData> items) { mItems = items; }
 
     @NonNull
     @Override
@@ -26,9 +27,7 @@ public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SchoolAdapter.ViewHolder holder, int position) {
-        holder.bind();
-    }
+    public void onBindViewHolder(@NonNull SchoolAdapter.ViewHolder holder, int position) { holder.bind(); }
 
     @Override
     public int getItemCount() {
@@ -37,17 +36,18 @@ public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private View mView;
-        private School mItem = mItems.get(getAdapterPosition() + 1);
+        private View mItemView;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mView = itemView;
+            mItemView = itemView;
         }
 
         void bind() {
-            TextView nameSchool = mView.findViewById(R.id.tv_nameSchool);
-            nameSchool.setText(mItem.getName());
+            SchoolData item = mItems.get(getAdapterPosition() + 1);
+
+            TextView nameSchool = mItemView.findViewById(R.id.tv_nameSchool);
+            nameSchool.setText(item.getName());
         }
     }
 }

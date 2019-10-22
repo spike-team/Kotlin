@@ -9,15 +9,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
-import com.tistory.dsmparkyoungjin.studentable.entity.Notification;
+import com.tistory.dsmparkyoungjin.studentable.data.NoticeData;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
+public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder> {
 
-    private ArrayList<Notification> mItems;
+    private ArrayList<NoticeData> mItems;
 
-    public NotificationAdapter(ArrayList<Notification> items) { mItems = items; }
+    public NoticeAdapter(ArrayList<NoticeData> items) { mItems = items; }
 
     @NonNull
     @Override
@@ -33,20 +35,21 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private View mView;
-        private Notification mItem = mItems.get(getAdapterPosition() + 1);
+        private View mItemView;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mView = itemView;
+            mItemView = itemView;
         }
 
         void bind() {
-            TextView date = mView.findViewById(R.id.tv_date_notification);
-            TextView content = mView.findViewById(R.id.tv_content_notification);
+            NoticeData item = mItems.get(getAdapterPosition() + 1);
 
-            date.setText(mItem.getDate());
-            content.setText(mItem.getContent());
+            TextView tvDate = mItemView.findViewById(R.id.tv_date_notification);
+            tvDate.setText(item.getDate());
+
+            TextView tvContent = mItemView.findViewById(R.id.tv_content_notification);
+            tvContent.setText(item.getContent());
         }
     }
 }

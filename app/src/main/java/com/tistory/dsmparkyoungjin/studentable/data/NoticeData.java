@@ -1,12 +1,12 @@
-package com.tistory.dsmparkyoungjin.studentable.entity;
+package com.tistory.dsmparkyoungjin.studentable.data;
 
-public class Notification {
+public class NoticeData {
 
     private String date;
 
     private String content;
 
-    public Notification(String date, String content) {
+    public NoticeData(String date, String content) {
         this.date = date;
         this.content = content;
     }
