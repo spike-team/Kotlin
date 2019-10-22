@@ -5,13 +5,15 @@ import android.content.SharedPreferences;
 
 public class MainPrefHelperImpl implements MainPrefHelper {
 
+    public static final String TIME = "TIME";
+    public static final String MEAL = "MEAL";
+
     private static final String KEY_RECENT_VIEW = "RECENT_VIEW";
     private static final String KEY_SCHOOL_NAME = "SCHOOL_NAME";
     private static final String KEY_GRADE_NUMBER = "GRADE_NUMBER";
     private static final String KEY_CLASS_NUMBER = "CLASS_NUMBER";
 
-    public static final String TIME = "TIME";
-    public static final String MEAL = "MEAL";
+    private static final String DEFVALUE_BLANK = "";
 
     private static final int DEFVALUE_ZERO = 0;
 
@@ -25,7 +27,7 @@ public class MainPrefHelperImpl implements MainPrefHelper {
 
     @Override
     public String getSchoolName() {
-        return mSharedPref.getString(KEY_SCHOOL_NAME, "");
+        return mSharedPref.getString(KEY_SCHOOL_NAME, DEFVALUE_BLANK);
     }
 
     @Override

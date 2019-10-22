@@ -9,6 +9,15 @@ public interface MainContract {
 
     interface Presenter {
 
+        void init();
+
+        String getActionBarTitle();
+
+        String getRecentView();
+
+        void setRecentViewTime();
+
+        void setRecentViewMeal();
     }
 
 }

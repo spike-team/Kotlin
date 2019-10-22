@@ -1,9 +1,7 @@
 package com.tistory.dsmparkyoungjin.studentable.ui.main.base;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -12,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
-import com.tistory.dsmparkyoungjin.studentable.domain.local.MainPrefHelper;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.MainPrefHelperImpl;
 import com.tistory.dsmparkyoungjin.studentable.ui.main.meal.MealFragment;
 import com.tistory.dsmparkyoungjin.studentable.ui.main.time.TimeFragment;
@@ -33,15 +30,13 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPresenter = new MainPresenter(this);
+        mPresenter = new MainPresenter(this, getApplicationContext());
+        mPresenter.init();
     }
 
     public void replaceFragment(Fragment fragment) {
-        MainPrefHelper helper = new MainPrefHelperImpl(getApplicationContext());
-        if(fragment instanceof TimeFragment)
-            helper.setRecentView(MainPrefHelperImpl.TIME);
-        else
-            helper.setRecentView(MainPrefHelperImpl.MEAL);
+        if (fragment instanceof TimeFragment)   mPresenter.setRecentViewTime();
+        else                                    mPresenter.setRecentViewMeal();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_container_main, fragment).commit();
     }
@@ -59,9 +54,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar_center_title);
         final TextView title = getSupportActionBar().getCustomView().findViewById(R.id.tv_title);
-
-        SharedPreferences pref = getSharedPreferences("STUDENTABLE", Context.MODE_PRIVATE);
-        title.setText(pref.getString("SCHOOL", "학교 이름") + " " + pref.getString("CLASS", "학년 반"));
+        title.setText(mPresenter.getActionBarTitle());
     }
 
     private void initFloatingActionBar() {
@@ -83,8 +76,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     private void setRecentView() {
-        MainPrefHelper helper = new MainPrefHelperImpl(getApplicationContext());
-        switch (helper.getRecentView()) {
+        switch (mPresenter.getRecentView()) {
             case MainPrefHelperImpl.TIME:
                 replaceFragment(mTimeFragment);
                 break;
