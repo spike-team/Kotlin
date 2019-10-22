@@ -24,10 +24,13 @@ public class SearchSchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_search_sch, container, false);
+        return inflater.inflate(R.layout.fragment_search_sch, container, false);
+    }
 
-        rootView.findViewById(R.id.btn_search).setOnClickListener(v -> {
-            MaterialEditText metSearchSchool = rootView.findViewById(R.id.met_searchSchool);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        view.findViewById(R.id.btn_search).setOnClickListener(v -> {
+            MaterialEditText metSearchSchool = view.findViewById(R.id.met_searchSchool);
             String school = Objects.requireNonNull(metSearchSchool.getText()).toString();
             if (school.length() >= 3) {
                 ((SettingActivity) Objects.requireNonNull(getActivity())).selectFragment(school);
@@ -35,7 +38,5 @@ public class SearchSchFragment extends Fragment {
                 Toast.makeText(getContext(), "3글자 이상 입력해주세요", Toast.LENGTH_SHORT).show();
             }
         });
-
-        return rootView;
     }
 }

@@ -21,11 +21,12 @@ public class MealFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_meal, container, false);
+        return inflater.inflate(R.layout.fragment_meal, container, false);
+    }
 
-        CircleIndicator circleIndicator = rootView.findViewById(R.id.ci_date);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        CircleIndicator circleIndicator = view.findViewById(R.id.ci_date);
         circleIndicator.createIndicators(5, 0);
-
-        return rootView;
     }
 }

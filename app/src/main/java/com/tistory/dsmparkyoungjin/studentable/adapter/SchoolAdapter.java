@@ -12,7 +12,6 @@ import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder> {
 
