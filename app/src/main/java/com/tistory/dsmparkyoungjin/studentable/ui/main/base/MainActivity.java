@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
+import com.tistory.dsmparkyoungjin.studentable.domain.local.MainPrefHelper;
+import com.tistory.dsmparkyoungjin.studentable.domain.local.MainPrefHelperImpl;
 import com.tistory.dsmparkyoungjin.studentable.ui.main.meal.MealFragment;
 import com.tistory.dsmparkyoungjin.studentable.ui.main.time.TimeFragment;
 import com.tistory.dsmparkyoungjin.studentable.ui.notice.NoticeActivity;
@@ -19,7 +21,9 @@ import com.tistory.dsmparkyoungjin.studentable.ui.reset.ResetActivity;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainContract.View {
+
+    private MainContract.Presenter mPresenter;
 
     private MealFragment mMealFragment = new MealFragment();
     private TimeFragment mTimeFragment = new TimeFragment();
@@ -29,13 +33,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initView();
+        mPresenter = new MainPresenter(this);
     }
 
-    private void initView() {
+    public void replaceFragment(Fragment fragment) {
+        MainPrefHelper helper = new MainPrefHelperImpl(getApplicationContext());
+        if(fragment instanceof TimeFragment)
+            helper.setRecentView(MainPrefHelperImpl.TIME);
+        else
+            helper.setRecentView(MainPrefHelperImpl.MEAL);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_container_main, fragment).commit();
+    }
+
+    @Override
+    public void initView() {
         initActionBar();
-        setLastedView();
-        setOnClickFloatingActionBar();
+        initFloatingActionBar();
+
+        setRecentView();
     }
 
     @SuppressLint("SetTextI18n")
@@ -48,20 +64,7 @@ public class MainActivity extends AppCompatActivity {
         title.setText(pref.getString("SCHOOL", "학교 이름") + " " + pref.getString("CLASS", "학년 반"));
     }
 
-    private void setLastedView() {
-        SharedPreferences pref = getSharedPreferences("STUDENTABLE", Context.MODE_PRIVATE);
-        switch (pref.getString("LASTED_VIEW", "")) {
-            case "":
-            case "TIMETABLE":
-                replaceFragment(mTimeFragment);
-                break;
-            case "MEAL":
-                replaceFragment(mMealFragment);
-                break;
-        }
-    }
-
-    private void setOnClickFloatingActionBar() {
+    private void initFloatingActionBar() {
         findViewById(R.id.fab_time).setOnClickListener(
                 v -> replaceFragment(mTimeFragment)
         );
@@ -70,21 +73,24 @@ public class MainActivity extends AppCompatActivity {
                 v -> replaceFragment(mMealFragment)
         );
 
-        findViewById(R.id.fab_setting).setOnClickListener(v ->
-                startActivity(new Intent(this, ResetActivity.class))
+        findViewById(R.id.fab_setting).setOnClickListener(
+                v -> startActivity(new Intent(this, ResetActivity.class))
         );
 
-        findViewById(R.id.fab_notification).setOnClickListener(v ->
-                startActivity(new Intent(this, NoticeActivity.class))
+        findViewById(R.id.fab_notification).setOnClickListener(
+                v -> startActivity(new Intent(this, NoticeActivity.class))
         );
     }
 
-    public void replaceFragment(Fragment fragment) {
-        SharedPreferences pref = getSharedPreferences("STUDENTABLE", Context.MODE_PRIVATE);
-        if(fragment instanceof TimeFragment)
-            pref.edit().putString("LASTED_VIEW", "TIMETABLE").apply();
-        else
-            pref.edit().putString("LASTED_VIEW", "MEAL").apply();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_container_main, fragment).commit();
+    private void setRecentView() {
+        MainPrefHelper helper = new MainPrefHelperImpl(getApplicationContext());
+        switch (helper.getRecentView()) {
+            case MainPrefHelperImpl.TIME:
+                replaceFragment(mTimeFragment);
+                break;
+            case MainPrefHelperImpl.MEAL:
+                replaceFragment(mMealFragment);
+                break;
+        }
     }
 }
