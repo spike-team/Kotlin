@@ -4,7 +4,6 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
@@ -15,6 +14,8 @@ import androidx.core.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.tistory.dsmparkyoungjin.studentable.R;
+import com.tistory.dsmparkyoungjin.studentable.domain.local.NoticePrefHelper;
+import com.tistory.dsmparkyoungjin.studentable.domain.local.NoticePrefHelperImpl;
 
 import java.util.Objects;
 import java.util.Random;
@@ -25,11 +26,13 @@ public class ChangeTimeMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("STUDENTABLE", Context.MODE_PRIVATE);
+        NoticePrefHelper mPrefHelper = new NoticePrefHelperImpl(getApplicationContext());
 
-        if(pref.getBoolean("FCM_CHANGE", true)) {
-            showNotification(Objects.requireNonNull(remoteMessage.getNotification()).getTitle(),
-                    remoteMessage.getNotification().getBody());
+        if (mPrefHelper.isEnable()) {
+            showNotification(
+                    Objects.requireNonNull(remoteMessage.getNotification()).getTitle(),
+                    remoteMessage.getNotification().getBody()
+            );
         }
     }
 
@@ -38,15 +41,16 @@ public class ChangeTimeMessagingService extends FirebaseMessagingService {
         String NOTIFICATION_CHANNEL_ID = "com.tistory.dsmparkyoungjin.studentable";
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel =
-                    new NotificationChannel(
-                            NOTIFICATION_CHANNEL_ID,
-                            "Notification",
-                            NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel notificationChannel = new NotificationChannel(
+                    NOTIFICATION_CHANNEL_ID,
+                    "Notification",
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
 
             notificationChannel.setDescription("CHANNEL");
             notificationChannel.enableLights(true);
             notificationChannel.setLightColor(Color.BLUE);
+
             assert notificationManager != null;
             notificationManager.createNotificationChannel(notificationChannel);
         }

@@ -16,10 +16,10 @@
             android:id="@+id/swc_notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="24dp"/>
+            android:layout_marginEnd="24dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_stateSwitch"
@@ -39,12 +39,10 @@
         android:layout_height="match_parent">
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/v"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorLine"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"/>
+            android:background="@color/colorLine" />
 
         <FrameLayout
             android:id="@+id/fl_transparency"

@@ -22,7 +22,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_notification, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_notice, parent, false));
     }
 
     @Override
@@ -43,10 +43,10 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
         void bind() {
             NoticeData item = mItems.get(getAdapterPosition());
 
-            TextView tvDate = mItemView.findViewById(R.id.tv_date_notification);
+            TextView tvDate = mItemView.findViewById(R.id.tv_date_notice);
             tvDate.setText(item.getDate());
 
-            TextView tvContent = mItemView.findViewById(R.id.tv_content_notification);
+            TextView tvContent = mItemView.findViewById(R.id.tv_content_notice);
             tvContent.setText(item.getContent());
         }
     }
