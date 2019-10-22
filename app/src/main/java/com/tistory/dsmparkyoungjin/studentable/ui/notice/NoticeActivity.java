@@ -1,7 +1,5 @@
 package com.tistory.dsmparkyoungjin.studentable.ui.notice;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -19,20 +17,24 @@ import com.tistory.dsmparkyoungjin.studentable.data.NoticeData;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class NoticeActivity extends AppCompatActivity {
+public class NoticeActivity extends AppCompatActivity implements NoticeContract.View {
+
+    private NoticeContract.Presenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notice);
 
-        initView();
+        mPresenter = new NoticePresenter(this);
+        mPresenter.init(this);
     }
 
-    private void initView() {
+    @Override
+    public void initView() {
         initActionBar();
-        initSwitch();
         initRecyclerView();
+        initSwitch();
     }
 
     private void initActionBar() {
@@ -53,35 +55,27 @@ public class NoticeActivity extends AppCompatActivity {
     }
 
     private void initSwitch() {
+        Switch swcNotice = findViewById(R.id.swc_notice);
+        swcNotice.setChecked(mPresenter.isEnable());
 
-        Switch swcNotification = findViewById(R.id.swc_notification);
+        check(swcNotice.isChecked());
+        swcNotice.setOnCheckedChangeListener(
+                (buttonView, isCheck) -> check(isCheck)
+        );
+    }
+
+    private void check(Boolean check) {
         TextView tvStateSwitch = findViewById(R.id.tv_stateSwitch);
         FrameLayout flTransparency = findViewById(R.id.fl_transparency);
 
-        SharedPreferences pref = getSharedPreferences("STUDENTABLE", Context.MODE_PRIVATE);
-
-        swcNotification.setChecked(pref.getBoolean("FCM_CHANGE", true));
-
-        if(swcNotification.isChecked()) {
+        if (check) {
+            mPresenter.setEnable();
             flTransparency.setVisibility(View.GONE);
-            pref.edit().putBoolean("FCM_CHANGE", true).apply();
             tvStateSwitch.setText("알림 기능 사용 중");
         } else {
+            mPresenter.setDisable();
             flTransparency.setVisibility(View.VISIBLE);
-            pref.edit().putBoolean("FCM_CHANGE", false).apply();
             tvStateSwitch.setText("알림 기능 사용 안함");
         }
-
-        swcNotification.setOnCheckedChangeListener((buttonView, check) -> {
-            if (check) {
-                flTransparency.setVisibility(View.GONE);
-                pref.edit().putBoolean("FCM_CHANGE", true).apply();
-                tvStateSwitch.setText("알림 기능 사용 중");
-            } else {
-                flTransparency.setVisibility(View.VISIBLE);
-                pref.edit().putBoolean("FCM_CHANGE", false).apply();
-                tvStateSwitch.setText("알림 기능 사용 안함");
-            }
-        });
     }
 }
