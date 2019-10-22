@@ -41,7 +41,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
         }
 
         void bind() {
-            NoticeData item = mItems.get(getAdapterPosition() + 1);
+            NoticeData item = mItems.get(getAdapterPosition());
 
             TextView tvDate = mItemView.findViewById(R.id.tv_date_notification);
             tvDate.setText(item.getDate());
