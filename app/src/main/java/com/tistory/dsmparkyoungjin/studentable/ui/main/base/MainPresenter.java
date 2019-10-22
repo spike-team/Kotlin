@@ -11,13 +11,13 @@ class MainPresenter implements MainContract.Presenter {
 
     private MainPrefHelper mPrefHelper;
 
-    MainPresenter(MainContract.View mView, Context context) {
-        this.mView = mView;
+    MainPresenter(Context context) {
         mPrefHelper = new MainPrefHelperImpl(context);
     }
 
     @Override
-    public void init() {
+    public void init(MainContract.View view) {
+        mView = view;
         mView.initView();
     }
 

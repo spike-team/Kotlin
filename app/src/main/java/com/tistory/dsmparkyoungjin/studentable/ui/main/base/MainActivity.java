@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPresenter = new MainPresenter(this, getApplicationContext());
-        mPresenter.init();
+        mPresenter = new MainPresenter(this);
+        mPresenter.init(this);
     }
 
     public void replaceFragment(Fragment fragment) {

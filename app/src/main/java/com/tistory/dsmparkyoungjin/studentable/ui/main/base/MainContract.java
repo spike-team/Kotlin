@@ -9,7 +9,7 @@ public interface MainContract {
 
     interface Presenter {
 
-        void init();
+        void init(View view);
 
         String getActionBarTitle();
 
