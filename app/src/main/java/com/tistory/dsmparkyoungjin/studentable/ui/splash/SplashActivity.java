@@ -19,16 +19,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.ui.main.base.MainActivity;
-import com.tistory.dsmparkyoungjin.studentable.ui.setting.base.SettingActivity;
+import com.tistory.dsmparkyoungjin.studentable.ui.set.base.SetActivity;
 
 import java.util.Objects;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private final int RC_SUCCESS_GOOGLE_AUTH = 1001;
-    private final String STUDENTABLE = "STUDENTABLE";
-    private final String DEVICE_CODE = "DEVICE_CODE";
-    private final String GOOGLE_AUTH = "GOOGLE_AUTH";
+    private static final int RC_SUCCESS_GOOGLE_AUTH = 1001;
+    private static final String STUDENTABLE = "STUDENTABLE";
+    private static final String DEVICE_CODE = "DEVICE_CODE";
+    private static final String GOOGLE_AUTH = "GOOGLE_AUTH";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(getApplication(), SettingActivity.class).putExtra("TYPE", "SCHOOL"));
+            startActivity(new Intent(getApplication(), SetActivity.class).putExtra("TYPE", "SCHOOL"));
             finish();
         }, 800);
     }

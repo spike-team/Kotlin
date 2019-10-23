@@ -1,4 +1,4 @@
-package com.tistory.dsmparkyoungjin.studentable.ui.setting.search;
+package com.tistory.dsmparkyoungjin.studentable.ui.set.search;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.rengwuxian.materialedittext.MaterialEditText;
 import com.tistory.dsmparkyoungjin.studentable.R;
-import com.tistory.dsmparkyoungjin.studentable.ui.setting.base.SettingActivity;
+import com.tistory.dsmparkyoungjin.studentable.ui.set.base.SetActivity;
 
 import java.util.Objects;
 
@@ -33,7 +33,7 @@ public class SearchSchFragment extends Fragment {
             MaterialEditText metSearchSchool = view.findViewById(R.id.met_searchSchool);
             String school = Objects.requireNonNull(metSearchSchool.getText()).toString();
             if (school.length() >= 3) {
-                ((SettingActivity) Objects.requireNonNull(getActivity())).selectFragment(school);
+                ((SetActivity) Objects.requireNonNull(getActivity())).selectFragment(school);
             } else {
                 Toast.makeText(getContext(), "3글자 이상 입력해주세요", Toast.LENGTH_SHORT).show();
             }

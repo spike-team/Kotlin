@@ -1,4 +1,4 @@
-package com.tistory.dsmparkyoungjin.studentable.ui.setting.set;
+package com.tistory.dsmparkyoungjin.studentable.ui.set.set;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

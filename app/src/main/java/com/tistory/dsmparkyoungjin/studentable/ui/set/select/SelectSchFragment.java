@@ -1,4 +1,4 @@
-package com.tistory.dsmparkyoungjin.studentable.ui.setting.select;
+package com.tistory.dsmparkyoungjin.studentable.ui.set.select;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
+import com.tistory.dsmparkyoungjin.studentable.ui.set.base.SetActivity;
+
+import java.util.Objects;
 
 public class SelectSchFragment extends Fragment {
 
@@ -24,5 +27,8 @@ public class SelectSchFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        view.findViewById(R.id.btn_next).setOnClickListener(
+                v -> ((SetActivity) Objects.requireNonNull(getActivity())).setFragment()
+        );
     }
 }

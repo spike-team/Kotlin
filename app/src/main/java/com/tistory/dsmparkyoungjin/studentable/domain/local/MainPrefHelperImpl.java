@@ -11,6 +11,7 @@ public class MainPrefHelperImpl implements MainPrefHelper {
     private static final String PREFERENCE_NAME = "STUDNETABLE";
     private static final String KEY_RECENT_VIEW = "RECENT_VIEW";
     private static final String KEY_SCHOOL_NAME = "SCHOOL_NAME";
+    private static final String KEY_SCHOOL_CODE = "SCHOOL_CODE";
     private static final String KEY_GRADE_NUMBER = "GRADE_NUMBER";
     private static final String KEY_CLASS_NUMBER = "CLASS_NUMBER";
 

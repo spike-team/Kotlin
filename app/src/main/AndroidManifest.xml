@@ -16,7 +16,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.reset.ResetActivity" />
         <activity android:name=".ui.notice.NoticeActivity" />
-        <activity android:name=".ui.setting.base.SettingActivity" />
+        <activity android:name=".ui.set.base.SetActivity" />
         <activity android:name=".ui.main.base.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,9 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.splash.SplashActivity"
-            android:theme="@style/SplashTheme" />
+        <activity android:name=".ui.splash.SplashActivity"
+            android:theme="@style/SplashTheme">
+        </activity>
 
         <service
             android:name=".service.ChangeTimeMessagingService"
@@ -36,5 +36,4 @@
             </intent-filter>
         </service>
     </application>
-
 </manifest>

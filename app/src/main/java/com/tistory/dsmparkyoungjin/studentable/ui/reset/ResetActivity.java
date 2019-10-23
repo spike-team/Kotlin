@@ -8,7 +8,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
-import com.tistory.dsmparkyoungjin.studentable.ui.setting.base.SettingActivity;
+import com.tistory.dsmparkyoungjin.studentable.ui.set.base.SetActivity;
 
 import java.util.Objects;
 
@@ -37,14 +37,14 @@ public class ResetActivity extends AppCompatActivity {
 
     private void setOnClickSetSchool() {
         findViewById(R.id.tv_setAll).setOnClickListener(v -> {
-            startActivity(new Intent(this, SettingActivity.class).putExtra("TYPE", "SCHOOL"));
+            startActivity(new Intent(this, SetActivity.class).putExtra("TYPE", "SCHOOL"));
             finish();
         });
     }
 
     private void setOnClickSetClass() {
         findViewById(R.id.tv_setClass).setOnClickListener(v -> {
-            startActivity(new Intent(this, SettingActivity.class).putExtra("TYPE", "CLASS"));
+            startActivity(new Intent(this, SetActivity.class).putExtra("TYPE", "CLASS"));
             finish();
         });
     }
