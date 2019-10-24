@@ -8,7 +8,6 @@ import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 
 public class SetPrefHelperImpl implements SetPrefHelper {
 
-
     private static final String PREFERENCE_NAME = "STUDENTABLE";
     private static final String KEY_SET_SCHOOL_NAME = "SET_SCHOOL_NAME";
     private static final String KEY_SET_SCHOOL_CODE = "SET_SCHOOL_CODE";

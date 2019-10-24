@@ -1,8 +1,6 @@
 package com.tistory.dsmparkyoungjin.studentable.ui.splash;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,39 +14,26 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.ui.main.base.MainActivity;
 import com.tistory.dsmparkyoungjin.studentable.ui.set.base.SetActivity;
 
 import java.util.Objects;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements SpalshContract.View {
+
+    private SpalshContract.Presenter mPresenter;
+    private String mGoogleAuth;
 
     private static final int RC_SUCCESS_GOOGLE_AUTH = 1001;
-    private static final String STUDENTABLE = "STUDENTABLE";
-    private static final String DEVICE_CODE = "DEVICE_CODE";
-    private static final String GOOGLE_AUTH = "GOOGLE_AUTH";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        if(isSet()) {
-            new Handler().postDelayed(() -> {
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
-            }, 800);
-        } else {
-            GoogleSignInOptions mGSIO =
-                    new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                            .requestIdToken(getResources().getString(R.string.web_client_id))
-                            .requestEmail()
-                            .build();
-            GoogleSignInClient mGSIC = GoogleSignIn.getClient(this, mGSIO);
-            startActivityForResult(mGSIC.getSignInIntent(), RC_SUCCESS_GOOGLE_AUTH);
-        }
+        mPresenter = new SplashPresenter(this);
+        mPresenter.init(this);
     }
 
     @Override
@@ -58,40 +43,48 @@ public class SplashActivity extends AppCompatActivity {
         if (requestCode == RC_SUCCESS_GOOGLE_AUTH) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                assert account != null;
-                setGoogleAccount(account);
-                setDeviceCode();
+                mGoogleAuth = Objects.requireNonNull(task.getResult(ApiException.class)).getEmail();
+                mPresenter.setGoogleAuth();
+                mPresenter.setDeviceCode();
             } catch (ApiException e) {
                 Log.w("SplashActivity", "Google sign in failed", e);
             }
         }
 
+        startSetActivity();
+    }
+
+    @Override
+    public void initView() { splash(); }
+
+    @Override
+    public String getGoogleAuth() { return mGoogleAuth; }
+
+    private void splash() {
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(getApplication(), SetActivity.class).putExtra("TYPE", "SCHOOL"));
-            finish();
+            Log.d("TAG", "splash: ");
+            if (mPresenter.isSet()) startMainActivity();
+            else                    googleAuthSignIn();
         }, 800);
     }
 
-    private void setGoogleAccount(GoogleSignInAccount mGoogleAccount) {
-        SharedPreferences pref = getSharedPreferences(STUDENTABLE, Context.MODE_PRIVATE);
-        pref.edit().putString(GOOGLE_AUTH, mGoogleAccount.getId()).apply();
+    private void googleAuthSignIn() {
+        GoogleSignInOptions mGSIO =
+                new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(getResources().getString(R.string.web_client_id))
+                        .requestEmail()
+                        .build();
+        GoogleSignInClient mGSIC = GoogleSignIn.getClient(this, mGSIO);
+        startActivityForResult(mGSIC.getSignInIntent(), RC_SUCCESS_GOOGLE_AUTH);
     }
 
-    private void setDeviceCode() {
-        SharedPreferences pref = getSharedPreferences(STUDENTABLE, Context.MODE_PRIVATE);
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                        Log.w("err", "getInstanceId failed", task.getException());
-                        return;
-                    }
-                    pref.edit().putString(DEVICE_CODE, Objects.requireNonNull(task.getResult()).getToken()).apply();
-                });
+    private void startSetActivity() {
+        startActivity(new Intent(getApplication(), SetActivity.class).putExtra("TYPE", "SCHOOL"));
+        finish();
     }
 
-    private Boolean isSet() {
-        SharedPreferences pref = getSharedPreferences(STUDENTABLE, Context.MODE_PRIVATE);
-        return !(pref.getString(GOOGLE_AUTH, "").isEmpty());
+    private void startMainActivity() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
