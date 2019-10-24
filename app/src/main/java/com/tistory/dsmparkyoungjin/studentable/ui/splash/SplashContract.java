@@ -11,7 +11,7 @@ public interface SplashContract {
 
     interface Presenter {
 
-        void init(SplashContract.View view);
+        void init(View view);
 
         Boolean isSet();
 

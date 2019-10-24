@@ -62,20 +62,19 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
 
     private void splash() {
         new Handler().postDelayed(() -> {
-            Log.d("TAG", "splash: ");
             if (mPresenter.isSet()) startMainActivity();
             else                    googleAuthSignIn();
         }, 800);
     }
 
     private void googleAuthSignIn() {
-        GoogleSignInOptions mGSIO =
+        GoogleSignInOptions googleSignInOptions =
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                         .requestIdToken(getResources().getString(R.string.web_client_id))
                         .requestEmail()
                         .build();
-        GoogleSignInClient mGSIC = GoogleSignIn.getClient(this, mGSIO);
-        startActivityForResult(mGSIC.getSignInIntent(), RC_SUCCESS_GOOGLE_AUTH);
+        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
+        startActivityForResult(googleSignInClient.getSignInIntent(), RC_SUCCESS_GOOGLE_AUTH);
     }
 
     private void startSetActivity() {
