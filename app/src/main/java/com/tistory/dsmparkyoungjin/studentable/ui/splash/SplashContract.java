@@ -1,6 +1,6 @@
 package com.tistory.dsmparkyoungjin.studentable.ui.splash;
 
-public interface SpalshContract {
+public interface SplashContract {
 
     interface View {
 
@@ -11,7 +11,7 @@ public interface SpalshContract {
 
     interface Presenter {
 
-        void init(SpalshContract.View view);
+        void init(SplashContract.View view);
 
         Boolean isSet();
 

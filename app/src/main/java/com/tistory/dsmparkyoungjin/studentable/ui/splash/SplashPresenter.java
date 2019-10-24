@@ -8,17 +8,17 @@ import com.tistory.dsmparkyoungjin.studentable.domain.repository.SplashRepositor
 
 import java.util.Objects;
 
-public class SplashPresenter implements SpalshContract.Presenter {
+public class SplashPresenter implements SplashContract.Presenter {
 
     private SplashRepository mRepository;
-    private SpalshContract.View mView;
+    private SplashContract.View mView;
 
     SplashPresenter(Context context) {
         mRepository = new SplashRepositoryImpl(context);
     }
 
     @Override
-    public void init(SpalshContract.View view) {
+    public void init(SplashContract.View view) {
         mView = view;
         mView.initView();
     }

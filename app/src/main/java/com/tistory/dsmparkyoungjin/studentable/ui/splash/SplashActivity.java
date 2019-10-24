@@ -20,9 +20,9 @@ import com.tistory.dsmparkyoungjin.studentable.ui.set.base.SetActivity;
 
 import java.util.Objects;
 
-public class SplashActivity extends AppCompatActivity implements SpalshContract.View {
+public class SplashActivity extends AppCompatActivity implements SplashContract.View {
 
-    private SpalshContract.Presenter mPresenter;
+    private SplashContract.Presenter mPresenter;
     private String mGoogleAuth;
 
     private static final int RC_SUCCESS_GOOGLE_AUTH = 1001;
