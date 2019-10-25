@@ -16,7 +16,5 @@ public interface SplashContract {
         Boolean isSet();
 
         void setGoogleAuth();
-
-        void setDeviceCode();
     }
 }

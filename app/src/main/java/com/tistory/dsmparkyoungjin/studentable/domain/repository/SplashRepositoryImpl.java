@@ -22,9 +22,4 @@ public class SplashRepositoryImpl implements SplashRepository {
     public void setGoogleAuth(String mGoogleEmail) {
         mPrefHelper.setGoogleAuth(mGoogleEmail);
     }
-
-    @Override
-    public void setDeviceCode(String mDeviceCode) {
-        mPrefHelper.setDeviceCode(mDeviceCode);
-    }
 }

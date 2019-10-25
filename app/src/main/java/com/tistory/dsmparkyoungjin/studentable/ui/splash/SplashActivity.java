@@ -45,7 +45,6 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
             try {
                 mGoogleAuth = Objects.requireNonNull(task.getResult(ApiException.class)).getEmail();
                 mPresenter.setGoogleAuth();
-                mPresenter.setDeviceCode();
             } catch (ApiException e) {
                 Log.w("SplashActivity", "Google sign in failed", e);
             }

@@ -6,7 +6,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -26,9 +25,9 @@ public class ChangeTimeMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
-        NoticePrefHelper mPrefHelper = new NoticePrefHelperImpl(getApplicationContext());
+        NoticePrefHelper prefHelper = new NoticePrefHelperImpl(getApplicationContext());
 
-        if (mPrefHelper.isEnable()) {
+        if (prefHelper.isEnable()) {
             showNotification(
                     Objects.requireNonNull(remoteMessage.getNotification()).getTitle(),
                     remoteMessage.getNotification().getBody()
@@ -72,8 +71,10 @@ public class ChangeTimeMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onNewToken(@NonNull String s) {
-        super.onNewToken(s);
+        refreshToken(s);
+    }
 
-        Log.d("Token Refreshed", s);
+    private void refreshToken(String newToken) {
+
     }
 }

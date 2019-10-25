@@ -5,6 +5,4 @@ public interface SplashPrefHelper {
     Boolean isSet();
 
     void setGoogleAuth(String mGoogleAuth);
-
-    void setDeviceCode(String mDeviceCode);
 }

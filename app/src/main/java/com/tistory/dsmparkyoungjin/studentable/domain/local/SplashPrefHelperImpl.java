@@ -19,17 +19,11 @@ public class SplashPrefHelperImpl implements SplashPrefHelper {
 
     @Override
     public Boolean isSet() {
-        return !(mSharedPref.getString(KEY_GOOGLE_AUTH, DEFVALUE_BLANK).isEmpty()) &&
-                !(mSharedPref.getString(KEY_DEVICE_CODE, DEFVALUE_BLANK).isEmpty());
+        return !(mSharedPref.getString(KEY_GOOGLE_AUTH, DEFVALUE_BLANK).isEmpty());
     }
 
     @Override
     public void setGoogleAuth(String mGoogleAuth) {
         mSharedPref.edit().putString(KEY_GOOGLE_AUTH, mGoogleAuth).apply();
-    }
-
-    @Override
-    public void setDeviceCode(String mDeviceCode) {
-        mSharedPref.edit().putString(KEY_DEVICE_CODE, mDeviceCode).apply();
     }
 }

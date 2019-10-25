@@ -2,11 +2,8 @@ package com.tistory.dsmparkyoungjin.studentable.ui.splash;
 
 import android.content.Context;
 
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.tistory.dsmparkyoungjin.studentable.domain.repository.SplashRepository;
 import com.tistory.dsmparkyoungjin.studentable.domain.repository.SplashRepositoryImpl;
-
-import java.util.Objects;
 
 public class SplashPresenter implements SplashContract.Presenter {
 
@@ -31,14 +28,5 @@ public class SplashPresenter implements SplashContract.Presenter {
     @Override
     public void setGoogleAuth() {
         mRepository.setGoogleAuth(mView.getGoogleAuth());
-    }
-
-    @Override
-    public void setDeviceCode() {
-        FirebaseInstanceId.getInstance()
-                .getInstanceId()
-                .addOnCompleteListener(
-                        task -> mRepository.setDeviceCode(Objects.requireNonNull(task.getResult()).getToken())
-                );
     }
 }
