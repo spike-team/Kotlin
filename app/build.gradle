@@ -30,23 +30,22 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.work:work-runtime:2.2.0'
 
     implementation rootProject.ext.materialEdittext
     implementation rootProject.ext.recyclerView
     implementation rootProject.ext.stepperTouch
     implementation rootProject.ext.fab
     implementation rootProject.ext.circleIndicator
+    implementation rootProject.ext.viewpager2
+
     implementation rootProject.ext.firebaseAuth
     implementation rootProject.ext.gms
     implementation rootProject.ext.firebaseAuth
     implementation rootProject.ext.firebaseAnalytics
     implementation rootProject.ext.firebaseMessaging
-    implementation 'androidx.work:work-runtime:2.2.0'
 
     implementation rootProject.ext.rxjava
-
-    implementation rootProject.ext.koin
-
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
 
@@ -28,5 +29,7 @@ public class MealFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         CircleIndicator circleIndicator = view.findViewById(R.id.ci_date);
         circleIndicator.createIndicators(5, 0);
+
+        ViewPager2 viewpager = view.findViewById(R.id.vp_meal);
     }
 }
