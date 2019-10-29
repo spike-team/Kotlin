@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.reset.ResetActivity" />
-        <activity android:name=".ui.notice.NoticeActivity" />
-        <activity android:name=".ui.set.base.SetActivity" />
-        <activity android:name=".ui.main.base.MainActivity" />
-        <activity android:name=".ui.splash.SplashActivity"
+        <activity android:name=".presentation.ui.reset.ResetActivity" />
+        <activity android:name=".presentation.ui.notice.NoticeActivity" />
+        <activity android:name=".presentation.ui.set.base.SetActivity" />
+        <activity android:name=".presentation.ui.main.base.MainActivity" />
+        <activity android:name=".presentation.ui.splash.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
