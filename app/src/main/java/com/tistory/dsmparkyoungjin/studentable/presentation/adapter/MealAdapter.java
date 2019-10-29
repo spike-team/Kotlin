@@ -3,6 +3,7 @@ package com.tistory.dsmparkyoungjin.studentable.presentation.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,44 +13,29 @@ import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.data.MealData;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MealAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealHolder> {
 
     private ArrayList<MealData> mItems;
 
-    private static final int SINGLE = 1;
-    private static final int TRIPLE = 3;
+    private static final int BREAKFAST = 0;
+    private static final int LUNCH = 1;
+    private static final int DINNER = 2;
 
     public MealAdapter(ArrayList<MealData> items) {
         mItems = items;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        if (mItems.get(position).getBreakfast() == null &&
-                mItems.get(position).getDinner() == null)
-            return SINGLE;
-        else
-            return TRIPLE;
-    }
-
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-
-        if (viewType == SINGLE)
-            return new MealSingleHolder(layoutInflater.inflate(R.layout.item_meal_single, parent, false));
-        else
-            return new MealTripleHolder(layoutInflater.inflate(R.layout.item_meal_triple, parent, false));
+    public MealHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new MealHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_meal, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof MealSingleHolder)
-            ((MealSingleHolder) holder).bind();
-        else
-            ((MealTripleHolder) holder).bind();
+    public void onBindViewHolder(@NonNull MealHolder holder, int position) {
+        holder.bind();
     }
 
     @Override
@@ -57,11 +43,11 @@ public class MealAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return mItems.size();
     }
 
-    class MealTripleHolder extends RecyclerView.ViewHolder {
+    class MealHolder extends RecyclerView.ViewHolder {
 
         private View mItemView;
 
-        MealTripleHolder(@NonNull View itemView) {
+        MealHolder(@NonNull View itemView) {
             super(itemView);
             this.mItemView = itemView;
         }
@@ -72,61 +58,33 @@ public class MealAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             TextView tvDate = mItemView.findViewById(R.id.tv_date);
             tvDate.setText(item.getDate());
 
-            TextView tvBreakfast = mItemView.findViewById(R.id.tv_listBreakfast);
-            TextView tvLunch = mItemView.findViewById(R.id.tv_listLunch);
-            TextView tvDinner = mItemView.findViewById(R.id.tv_listDinner);
+            List[] itemList = new List[]{
+                    item.getBreakfast(),
+                    item.getLunch(),
+                    item.getDinner()};
 
-            StringBuilder listBreakfast = new StringBuilder();
-            StringBuilder listLunch = new StringBuilder();
-            StringBuilder listDinner = new StringBuilder();
+            TextView[] itemViewArray = {
+                    mItemView.findViewById(R.id.tv_listBreakfast),
+                    mItemView.findViewById(R.id.tv_listLunch),
+                    mItemView.findViewById(R.id.tv_listDinner)};
 
-            if (item.getBreakfast() != null) {
-                for (String menuBreakfast : item.getBreakfast()) {
-                    listBreakfast.append(menuBreakfast).append(" ");
+            RelativeLayout[] containerArray = {
+                    mItemView.findViewById(R.id.rl_breakfast),
+                    mItemView.findViewById(R.id.rl_lunch),
+                    mItemView.findViewById(R.id.rl_dinner)};
+
+            StringBuilder strBuilder = new StringBuilder();
+
+            for (int i = BREAKFAST; i <= DINNER; i++) {
+                strBuilder.delete(0, strBuilder.length());
+                if (itemList[i] != null) {
+                    for (int j = 0; j < itemList[i].size(); j++) {
+                        strBuilder.append(itemList[i].get(j)).append(" ");
+                    }
+                    itemViewArray[i].setText(strBuilder);
+                } else {
+                    containerArray[i].setVisibility(View.GONE);
                 }
-                tvBreakfast.setText(listBreakfast);
-            }
-
-            if (item.getLunch() != null) {
-                for (String menuLunch : item.getLunch()) {
-                    listLunch.append(menuLunch).append(" ");
-                }
-                tvLunch.setText(listLunch);
-            }
-
-            if (item.getDinner() != null) {
-                for (String menuDinner : item.getDinner()) {
-                    listDinner.append(menuDinner).append(" ");
-                }
-                tvDinner.setText(listDinner);
-            }
-        }
-    }
-
-    class MealSingleHolder extends RecyclerView.ViewHolder {
-
-        private View mItemView;
-
-        MealSingleHolder(@NonNull View itemView) {
-            super(itemView);
-            this.mItemView = itemView;
-        }
-
-        void bind() {
-            MealData item = mItems.get(getAdapterPosition());
-
-            TextView tvDate = mItemView.findViewById(R.id.tv_date);
-            tvDate.setText(item.getDate());
-
-            TextView tvLunch = mItemView.findViewById(R.id.tv_listLunch);
-
-            StringBuilder listLunch = new StringBuilder();
-
-            if (item.getLunch() != null) {
-                for (String menuLunch : item.getLunch()) {
-                    listLunch.append(menuLunch).append(" ");
-                }
-                tvLunch.setText(listLunch);
             }
         }
     }

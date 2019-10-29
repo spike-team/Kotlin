@@ -1,5 +1,7 @@
 package com.tistory.dsmparkyoungjin.studentable.data;
 
+import androidx.annotation.Nullable;
+
 import java.util.List;
 
 public class MealData {
@@ -20,14 +22,17 @@ public class MealData {
         return date;
     }
 
+    @Nullable
     public List<String> getBreakfast() {
         return breakfast;
     }
 
+    @Nullable
     public List<String> getLunch() {
         return lunch;
     }
 
+    @Nullable
     public List<String> getDinner() {
         return dinner;
     }
