@@ -16,7 +16,10 @@ import com.tistory.dsmparkyoungjin.studentable.presentation.ui.set.base.SetActiv
 
 import java.util.Objects;
 
-public class SearchSchFragment extends Fragment {
+public class SearchSchFragment extends Fragment implements SearchSchContract.View{
+
+    private View mCurrentView;
+    private SearchSchContract.Presenter mPresenter;
 
     public SearchSchFragment() {
     }
@@ -24,19 +27,45 @@ public class SearchSchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_search_sch, container, false);
+        mCurrentView = inflater.inflate(R.layout.fragment_search_sch, container, false);
+        return mCurrentView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        view.findViewById(R.id.btn_search).setOnClickListener(v -> {
-            MaterialEditText metSearchSchool = view.findViewById(R.id.met_searchSchool);
-            String school = Objects.requireNonNull(metSearchSchool.getText()).toString();
-            if (school.length() >= 3) {
-                ((SetActivity) Objects.requireNonNull(getActivity())).selectFragment(school);
-            } else {
-                Toast.makeText(getContext(), "3글자 이상 입력해주세요", Toast.LENGTH_SHORT).show();
-            }
-        });
+        mPresenter = new SearchSchPresenter(getContext());
+        mPresenter.init(this);
+    }
+
+    @Override
+    public void initView() {
+        initSearchButton();
+    }
+
+    @Override
+    public void showToastForLackWord() {
+        Toast.makeText(getContext(), "3글자 이상 입력해주세요", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showToastForNotFound() {
+        Toast.makeText(getContext(), "결과를 찾을 수 없습니다", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNextSearch() {
+        ((SetActivity) Objects.requireNonNull(getActivity())).selectFragment();
+    }
+
+    @Override
+    public String getSchoolName() {
+        MaterialEditText metSearchSchool = mCurrentView.findViewById(R.id.met_searchSchool);
+        return Objects.requireNonNull(metSearchSchool.getText()).toString();
+    }
+
+    private void initSearchButton() {
+        mCurrentView.findViewById(R.id.btn_search).setOnClickListener(
+                v -> mPresenter.findSchool()
+        );
     }
 }

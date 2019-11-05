@@ -45,7 +45,10 @@ dependencies {
     implementation rootProject.ext.firebaseAnalytics
     implementation rootProject.ext.firebaseMessaging
 
+    implementation rootProject.ext.retrofit2
+    implementation rootProject.ext.gson
     implementation rootProject.ext.rxjava
+    implementation rootProject.ext.rxjavaAdapter
 }
 
 apply plugin: 'com.google.gms.google-services'

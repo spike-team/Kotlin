@@ -1,8 +1,13 @@
 package com.tistory.dsmparkyoungjin.studentable.data;
 
+import com.google.gson.annotations.SerializedName;
+
 public class SchoolData {
 
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("code")
     private String code;
 
     public SchoolData(String name, String code) {

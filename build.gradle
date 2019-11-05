@@ -17,6 +17,9 @@ ext {
     firebaseCore = 'com.google.firebase:firebase-core:17.2.0'
     firebaseAnalytics = 'com.google.firebase:firebase-analytics:17.2.0'
     firebaseMessaging = 'com.google.firebase:firebase-messaging:20.0.0'
+    retrofit2 = 'com.squareup.retrofit2:retrofit:2.6.2'
+    rxjavaAdapter = 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
+    gson = 'com.squareup.retrofit2:converter-gson:2.3.0'
 }
 
 buildscript {
