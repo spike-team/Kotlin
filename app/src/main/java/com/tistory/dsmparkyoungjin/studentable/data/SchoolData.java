@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class SchoolData {
 
-    @SerializedName("name")
+    @SerializedName("fullName")
     private String name;
 
-    @SerializedName("code")
+    @SerializedName("schoolCode")
     private String code;
 
     public SchoolData(String name, String code) {
