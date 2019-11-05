@@ -4,9 +4,9 @@ import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface SetService {
-    @GET("/school?key={key}")
-    Flowable<SchoolData> findSchool(@Path("key") String key);
+    @GET("/school")
+    Flowable<SchoolData> findSchool(@Query("key") String key);
 }
