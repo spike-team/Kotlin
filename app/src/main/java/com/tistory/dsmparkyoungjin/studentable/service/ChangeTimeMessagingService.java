@@ -75,6 +75,6 @@ public class ChangeTimeMessagingService extends FirebaseMessagingService {
     }
 
     private void refreshToken(String newToken) {
-
+        //TODO
     }
 }
