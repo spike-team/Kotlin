@@ -21,19 +21,13 @@ public class SearchSchPresenter implements SearchSchContract.Presenter {
         mView.initView();
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     @SuppressLint("CheckResult")
     @Override
-    public void findSchool() {
+    public void search() {
         String search = mView.getSchoolName();
         if (search.length() >= 3) {
-            mRepository.findSchool(search).subscribe(
-                    result -> {
-                        mRepository.setSchool(result);
-                        mView.onNextSearch();
-                    },
-                    error -> mView.showToastForNotFound()
-            );
+            mRepository.setSearch(search);
+            mView.onNextSearch();
         } else {
             mView.showToastForLackWord();
         }

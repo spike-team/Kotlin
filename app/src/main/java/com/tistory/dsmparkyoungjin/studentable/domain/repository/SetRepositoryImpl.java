@@ -7,6 +7,8 @@ import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelper;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelperImpl;
 import com.tistory.dsmparkyoungjin.studentable.domain.remote.SetService;
 
+import java.util.List;
+
 import io.reactivex.Flowable;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -20,16 +22,26 @@ public class SetRepositoryImpl implements SetRepository {
     public SetRepositoryImpl(Context context) {
         mPrefHelper = new SetPrefHelperImpl(context);
         mService = new Retrofit.Builder()
+                .baseUrl("http://ec2.jaehoon.kim:8080/api/v1/school/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl("https://studentable.jaehoon.kim/api/v1/")
                 .build()
                 .create(SetService.class);
     }
 
     @Override
-    public Flowable<SchoolData> findSchool(String mSchoolName) {
-        return mService.findSchool(mSchoolName);
+    public void setSearch(String search) {
+        mPrefHelper.setSearch(search);
+    }
+
+    @Override
+    public String getSearch() {
+        return mPrefHelper.getSearch();
+    }
+
+    @Override
+    public Flowable<List<SchoolData>> findSchool() {
+        return mService.findSchool(mPrefHelper.getSearch());
     }
 
     @Override

@@ -2,11 +2,17 @@ package com.tistory.dsmparkyoungjin.studentable.domain.repository;
 
 import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 
+import java.util.List;
+
 import io.reactivex.Flowable;
 
 public interface SetRepository {
 
-    Flowable<SchoolData> findSchool(String mSchoolName);
+    void setSearch(String search);
+
+    String getSearch();
+
+    Flowable<List<SchoolData>> findSchool();
 
     void setSchool(SchoolData mSchoolData);
 

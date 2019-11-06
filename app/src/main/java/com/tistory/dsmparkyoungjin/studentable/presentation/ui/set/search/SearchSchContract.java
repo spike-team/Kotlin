@@ -8,8 +8,6 @@ public interface SearchSchContract {
 
         void showToastForLackWord();
 
-        void showToastForNotFound();
-
         void onNextSearch();
 
         String getSchoolName();
@@ -19,6 +17,6 @@ public interface SearchSchContract {
 
         void init(View view);
 
-        void findSchool();
+        void search();
     }
 }

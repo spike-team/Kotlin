@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder> {
 
-    private ArrayList<SchoolData> mItems;
+    private List<SchoolData> mItems;
 
-    public SchoolAdapter(ArrayList<SchoolData> items) { mItems = items; }
+    public SchoolAdapter(List<SchoolData> items) { mItems = items; }
 
     @NonNull
     @Override

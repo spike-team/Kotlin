@@ -38,18 +38,11 @@ public class SearchSchFragment extends Fragment implements SearchSchContract.Vie
     }
 
     @Override
-    public void initView() {
-        initSearchButton();
-    }
+    public void initView() { initSearchButton(); }
 
     @Override
     public void showToastForLackWord() {
         Toast.makeText(getContext(), "3글자 이상 입력해주세요", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showToastForNotFound() {
-        Toast.makeText(getContext(), "결과를 찾을 수 없습니다", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -65,7 +58,7 @@ public class SearchSchFragment extends Fragment implements SearchSchContract.Vie
 
     private void initSearchButton() {
         mCurrentView.findViewById(R.id.btn_search).setOnClickListener(
-                v -> mPresenter.findSchool()
+                v -> mPresenter.search()
         );
     }
 }

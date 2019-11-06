@@ -4,6 +4,10 @@ import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 
 public interface SetPrefHelper {
 
+    void setSearch(String search);
+
+    String getSearch();
+
     void setSchool(SchoolData mSchoolData);
 
     void setGradeNo(int gradeNo);

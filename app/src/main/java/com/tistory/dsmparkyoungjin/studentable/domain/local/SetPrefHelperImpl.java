@@ -14,6 +14,7 @@ public class SetPrefHelperImpl implements SetPrefHelper {
     private static final String KEY_SET_CLASS_NUMBER = "SET_CLASS_NUMBER";
     private static final String KEY_SET_GRADE_NUMBER = "SET_GRADE_NUMBER";
 
+    private static final String KEY_SCHOOL_SEARCH = "SCHOOL_SEARCH";
     private static final String KEY_SCHOOL_NAME = "SCHOOL_NAME";
     private static final String KEY_SCHOOL_CODE = "SCHOOL_CODE";
     private static final String KEY_GRADE_NUMBER = "GRADE_NUMBER";
@@ -26,6 +27,16 @@ public class SetPrefHelperImpl implements SetPrefHelper {
 
     public SetPrefHelperImpl(Context context) {
         mSharedPref = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
+    }
+
+    @Override
+    public void setSearch(String search) {
+        mSharedPref.edit().putString(KEY_SCHOOL_SEARCH, search).apply();
+    }
+
+    @Override
+    public String getSearch() {
+        return mSharedPref.getString(KEY_SCHOOL_SEARCH, DEFVALUE_BLANK);
     }
 
     @Override
