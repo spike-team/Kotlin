@@ -1,5 +1,6 @@
 package com.tistory.dsmparkyoungjin.studentable.presentation.ui.set.select;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ public class SelectSchFragment extends Fragment implements SelectSchContract.Vie
 
     private View mCurrentView;
     private SelectSchContract.Presenter mPresenter;
+    private SchoolAdapter mAdapter;
 
     public SelectSchFragment() {
     }
@@ -34,6 +36,7 @@ public class SelectSchFragment extends Fragment implements SelectSchContract.Vie
         return mCurrentView;
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         mPresenter = new SelectSchPresenter(getContext());
@@ -42,24 +45,31 @@ public class SelectSchFragment extends Fragment implements SelectSchContract.Vie
 
     @Override
     public void initView() {
-        initNextButton();
-        initRecyclerView();
-    }
-
-    private void initNextButton() {
-        mCurrentView.findViewById(R.id.btn_next).setOnClickListener(
-                v -> onNextSelect()
-        );
-    }
-
-    private void initRecyclerView() {
+        initSelectButton();
     }
 
     @Override
     public void setItems(List<SchoolData> items) {
         RecyclerView rvSchool = mCurrentView.findViewById(R.id.rv_school);
-        SchoolAdapter adapter = new SchoolAdapter(items);
-        rvSchool.setAdapter(adapter);
+        mAdapter = new SchoolAdapter(items);
+        rvSchool.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void showToastForNotFound() {
+        Toast.makeText(getContext(), "찾을 수 없는 학교 이름입니다", Toast.LENGTH_SHORT).show();
+        onPrevious();
+    }
+
+    @Override
+    public void showToastForNotConnectInternet() {
+        Toast.makeText(getContext(), "연결할 수 없습니다. 인터넷을 확인해주세요", Toast.LENGTH_SHORT).show();
+        onPrevious();
+    }
+
+    @Override
+    public SchoolData getSelectedItem() {
+        return mAdapter.getSelectedItem();
     }
 
     @Override
@@ -68,8 +78,17 @@ public class SelectSchFragment extends Fragment implements SelectSchContract.Vie
     }
 
     @Override
-    public void notFound() {
-        Toast.makeText(getContext(), "결과를 찾을 수 없습니다", Toast.LENGTH_SHORT).show();
+    public void notSelected() {
+        Toast.makeText(getContext(), "학교를 선택해주세요", Toast.LENGTH_SHORT).show();
+    }
+
+    private void initSelectButton() {
+        mCurrentView.findViewById(R.id.btn_next).setOnClickListener(
+                v -> mPresenter.select()
+        );
+    }
+
+    private void onPrevious() {
         ((SetActivity) Objects.requireNonNull(getActivity())).searchFragment();
     }
 }

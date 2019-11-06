@@ -10,11 +10,17 @@ public interface SelectSchContract {
 
         void initView();
 
-        void onNextSelect();
-
         void setItems(List<SchoolData> items);
 
-        void notFound();
+        void showToastForNotFound();
+
+        void showToastForNotConnectInternet();
+
+        SchoolData getSelectedItem();
+
+        void onNextSelect();
+
+        void notSelected();
     }
 
     interface Presenter {
@@ -22,5 +28,7 @@ public interface SelectSchContract {
         void init(View view);
 
         void findSchool();
+
+        void select();
     }
 }
