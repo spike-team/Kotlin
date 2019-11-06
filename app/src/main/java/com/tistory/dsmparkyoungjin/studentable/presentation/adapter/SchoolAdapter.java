@@ -1,5 +1,6 @@
 package com.tistory.dsmparkyoungjin.studentable.presentation.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +12,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder> {
 
-    private List<SchoolData> mItems;
+    private ArrayList<SchoolData> mItems;
 
-    public SchoolAdapter(List<SchoolData> items) { mItems = items; }
+    private SchoolData selectItem;
+    private int selectPosition = -1;
+
+    public SchoolAdapter(ArrayList<SchoolData> items) {
+        mItems = items;
+    }
+
+    public SchoolData getSelectedItem() {
+        return selectItem;
+    }
 
     @NonNull
     @Override
@@ -26,7 +36,9 @@ public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SchoolAdapter.ViewHolder holder, int position) { holder.bind(); }
+    public void onBindViewHolder(@NonNull SchoolAdapter.ViewHolder holder, int position) {
+        holder.bind();
+    }
 
     @Override
     public int getItemCount() {
@@ -43,10 +55,28 @@ public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder
         }
 
         void bind() {
+            if (getAdapterPosition() == selectPosition)
+                mItemView.setBackgroundColor(Color.GRAY);
+            else
+                mItemView.setBackgroundColor(Color.WHITE);
+
             SchoolData item = mItems.get(getAdapterPosition());
 
             TextView nameSchool = mItemView.findViewById(R.id.tv_nameSchool);
             nameSchool.setText(item.getName());
+
+            mItemView.setOnClickListener(v -> {
+                if (selectPosition == getAdapterPosition()) {
+                    selectItem = null;
+                    selectPosition = -1;
+                }
+                else {
+                    selectItem = item;
+                    selectPosition = getAdapterPosition();
+                }
+
+                notifyDataSetChanged();
+            });
         }
     }
 }
