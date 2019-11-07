@@ -40,6 +40,11 @@ public class SetRepositoryImpl implements SetRepository {
     }
 
     @Override
+    public String getSchoolName() {
+        return mPrefHelper.getSchoolName();
+    }
+
+    @Override
     public Flowable<List<SchoolData>> findSchool() {
         return mService.findSchool(mPrefHelper.getSearch());
     }

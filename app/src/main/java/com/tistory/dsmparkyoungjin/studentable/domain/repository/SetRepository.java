@@ -12,6 +12,8 @@ public interface SetRepository {
 
     String getSearch();
 
+    String getSchoolName();
+
     Flowable<List<SchoolData>> findSchool();
 
     void setSchool(SchoolData mSchoolData);

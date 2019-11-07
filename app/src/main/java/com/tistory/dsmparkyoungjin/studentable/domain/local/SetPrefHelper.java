@@ -8,6 +8,8 @@ public interface SetPrefHelper {
 
     String getSearch();
 
+    String getSchoolName();
+
     void setSchool(SchoolData mSchoolData);
 
     void setGradeNo(int gradeNo);

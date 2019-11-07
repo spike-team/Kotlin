@@ -63,7 +63,7 @@ public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder
             SchoolData item = mItems.get(getAdapterPosition());
 
             TextView nameSchool = mItemView.findViewById(R.id.tv_nameSchool);
-            nameSchool.setText(parseSchoolName(item.getName()));
+            nameSchool.setText(parseSchoolName(item.getFullName()));
 
             mItemView.setOnClickListener(v -> {
                 if (selectPosition == getAdapterPosition()) {
