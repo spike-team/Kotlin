@@ -49,6 +49,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         setRecentView();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initActionBar();
+    }
+
     @SuppressLint("SetTextI18n")
     private void initActionBar() {
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
