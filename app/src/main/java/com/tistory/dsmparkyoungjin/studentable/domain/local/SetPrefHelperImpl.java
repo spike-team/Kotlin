@@ -70,10 +70,5 @@ public class SetPrefHelperImpl implements SetPrefHelper {
         editor.putString(KEY_SCHOOL_CODE, mSharedPref.getString(KEY_SET_SCHOOL_CODE, DEFVALUE_BLANK)).apply();
         editor.putInt(KEY_GRADE_NUMBER, mSharedPref.getInt(KEY_SET_GRADE_NUMBER, DEFVALUE_ZERO)).apply();
         editor.putInt(KEY_CLASS_NUMBER, mSharedPref.getInt(KEY_SET_CLASS_NUMBER, DEFVALUE_ZERO)).apply();
-
-        Log.d("TT", "saveAll: school name " + mSharedPref.getString(KEY_SCHOOL_NAME, DEFVALUE_BLANK) );
-        Log.d("TT", "saveAll: school code " + mSharedPref.getString(KEY_SCHOOL_CODE, DEFVALUE_BLANK) );
-        Log.d("TT", "saveAll: school grade " + mSharedPref.getInt(KEY_GRADE_NUMBER, DEFVALUE_ZERO) );
-        Log.d("TT", "saveAll: school class " + mSharedPref.getInt(KEY_CLASS_NUMBER, DEFVALUE_ZERO) );
     }
 }
