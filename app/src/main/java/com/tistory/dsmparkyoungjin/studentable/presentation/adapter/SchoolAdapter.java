@@ -63,14 +63,13 @@ public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder
             SchoolData item = mItems.get(getAdapterPosition());
 
             TextView nameSchool = mItemView.findViewById(R.id.tv_nameSchool);
-            nameSchool.setText(item.getName());
+            nameSchool.setText(parseSchoolName(item.getName()));
 
             mItemView.setOnClickListener(v -> {
                 if (selectPosition == getAdapterPosition()) {
                     selectItem = null;
                     selectPosition = -1;
-                }
-                else {
+                } else {
                     selectItem = item;
                     selectPosition = getAdapterPosition();
                 }
@@ -78,5 +77,10 @@ public class SchoolAdapter extends RecyclerView.Adapter<SchoolAdapter.ViewHolder
                 notifyDataSetChanged();
             });
         }
+
+    }
+
+    private static String parseSchoolName(String text) {
+        return text.replaceFirst("(?s)(.*)" + " ", "$1" + "\n");
     }
 }

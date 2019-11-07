@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,7 +18,7 @@ import com.tistory.dsmparkyoungjin.studentable.presentation.ui.set.base.SetActiv
 
 import java.util.Objects;
 
-public class SearchSchFragment extends Fragment implements SearchSchContract.View{
+public class SearchSchFragment extends Fragment implements SearchSchContract.View {
 
     private View mCurrentView;
     private SearchSchContract.Presenter mPresenter;
@@ -38,7 +40,10 @@ public class SearchSchFragment extends Fragment implements SearchSchContract.Vie
     }
 
     @Override
-    public void initView() { initSearchButton(); }
+    public void initView() {
+        initSearchButton();
+        initSearchEditText();
+    }
 
     @Override
     public void showToastForLackWord() {
@@ -60,5 +65,14 @@ public class SearchSchFragment extends Fragment implements SearchSchContract.Vie
         mCurrentView.findViewById(R.id.btn_search).setOnClickListener(
                 v -> mPresenter.search()
         );
+    }
+
+    private void initSearchEditText() {
+        ((EditText) mCurrentView.findViewById(R.id.met_searchSchool)).setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                mPresenter.search();
+            }
+            return true;
+        });
     }
 }
