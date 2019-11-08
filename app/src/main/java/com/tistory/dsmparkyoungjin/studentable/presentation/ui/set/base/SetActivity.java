@@ -69,9 +69,7 @@ public class SetActivity extends AppCompatActivity {
     public void onNextSet() {
         if (Objects.equals(getIntent().getStringExtra("TYPE"), "FIRST")) {
             startActivity(new Intent(getApplication(), MainActivity.class));
-            finish();
-        } else {
-            finish();
         }
+        this.finish();
     }
 }
