@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
+import com.tistory.dsmparkyoungjin.studentable.presentation.ui.set.base.SetActivity;
 
 import java.util.Objects;
 
@@ -62,7 +63,7 @@ public class SetClsFragment extends Fragment implements SetClsContract.View {
 
     @Override
     public void onNextSave() {
-        Objects.requireNonNull(getActivity()).finish();
+        ((SetActivity) Objects.requireNonNull(getActivity())).onNextSet();
     }
 
     private void initSaveButton() {

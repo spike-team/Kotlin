@@ -77,7 +77,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     }
 
     private void startSetActivity() {
-        startActivity(new Intent(getApplication(), SetActivity.class).putExtra("TYPE", "SCHOOL"));
+        startActivity(new Intent(getApplication(), SetActivity.class).putExtra("TYPE", "FIRST"));
         finish();
     }
 
