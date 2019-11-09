@@ -3,7 +3,6 @@ package com.tistory.dsmparkyoungjin.studentable.domain.local;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 
@@ -38,6 +37,11 @@ public class SetPrefHelperImpl implements SetPrefHelper {
     @Override
     public String getSearch() {
         return mSharedPref.getString(KEY_SCHOOL_SEARCH, DEFVALUE_BLANK);
+    }
+
+    @Override
+    public String getSchoolCode() {
+        return mSharedPref.getString(KEY_SCHOOL_CODE, DEFVALUE_BLANK);
     }
 
     @Override

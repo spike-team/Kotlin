@@ -33,9 +33,13 @@ public class SelectSchPresenter implements SelectSchContract.Presenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
-                        result -> {
-                            if (result == null) mView.showToastForNotFound();
-                            else mView.setItems(result);
+                        response -> {
+                            switch (response.code()) {
+                                case 200:
+                                    mView.setItems(response.body());    break;
+                                case 404:
+                                    mView.showToastForNotFound();       break;
+                            }
                         },
                         error -> mView.showToastForNotConnectInternet()
                 );

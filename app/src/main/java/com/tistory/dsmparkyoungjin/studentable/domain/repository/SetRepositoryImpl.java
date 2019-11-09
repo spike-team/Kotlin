@@ -10,6 +10,7 @@ import com.tistory.dsmparkyoungjin.studentable.domain.remote.SetService;
 import java.util.List;
 
 import io.reactivex.Flowable;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -45,7 +46,7 @@ public class SetRepositoryImpl implements SetRepository {
     }
 
     @Override
-    public Flowable<List<SchoolData>> findSchool() {
+    public Flowable<Response<List<SchoolData>>> findSchool() {
         return mService.findSchool(mPrefHelper.getSearch());
     }
 

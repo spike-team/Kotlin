@@ -12,18 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.data.MealData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealHolder> {
 
-    private ArrayList<MealData> mItems;
+    private List<MealData> mItems;
 
     private static final int BREAKFAST = 0;
     private static final int LUNCH = 1;
     private static final int DINNER = 2;
 
-    public MealAdapter(ArrayList<MealData> items) {
+    public MealAdapter(List<MealData> items) {
         mItems = items;
     }
 

@@ -10,6 +10,8 @@ public interface SetPrefHelper {
 
     String getSchoolName();
 
+    String getSchoolCode();
+
     void setSchool(SchoolData mSchoolData);
 
     void setGradeNo(int gradeNo);

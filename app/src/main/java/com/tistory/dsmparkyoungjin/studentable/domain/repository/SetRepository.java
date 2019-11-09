@@ -5,6 +5,7 @@ import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 import java.util.List;
 
 import io.reactivex.Flowable;
+import retrofit2.Response;
 
 public interface SetRepository {
 
@@ -14,7 +15,7 @@ public interface SetRepository {
 
     String getSchoolName();
 
-    Flowable<List<SchoolData>> findSchool();
+    Flowable<Response<List<SchoolData>>> findSchool();
 
     void setSchool(SchoolData mSchoolData);
 
