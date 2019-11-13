@@ -1,6 +1,6 @@
 package com.tistory.dsmparkyoungjin.studentable.domain.remote;
 
-import com.tistory.dsmparkyoungjin.studentable.data.MealData;
+import com.tistory.dsmparkyoungjin.studentable.data.MealResultData;
 
 import io.reactivex.Flowable;
 import retrofit2.Response;
@@ -9,5 +9,5 @@ import retrofit2.http.Query;
 
 public interface MealService {
     @GET("meal")
-    Flowable<Response<MealData>> findMeal(@Query("date") String date, @Query("schoolCode") String schoolCode);
+    Flowable<Response<MealResultData>> findMeal(@Query("date") String date, @Query("schoolCode") String schoolCode);
 }

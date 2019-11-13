@@ -11,6 +11,12 @@ public interface MealContract {
         void initView();
 
         void setItem(List<MealData> items);
+
+        void showToastForError();
+
+        void showToastForStrangeData();
+
+        void showToastForNotFound();
     }
 
     interface Presenter {

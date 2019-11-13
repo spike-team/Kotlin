@@ -2,6 +2,7 @@ package com.tistory.dsmparkyoungjin.studentable.presentation.ui.set.select;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 
 import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 import com.tistory.dsmparkyoungjin.studentable.domain.repository.SetRepository;
@@ -41,7 +42,10 @@ public class SelectSchPresenter implements SelectSchContract.Presenter {
                                     mView.showToastForNotFound();       break;
                             }
                         },
-                        error -> mView.showToastForNotConnectInternet()
+                        error -> {
+                            mView.showToastForNotConnectInternet();
+                            Log.d("TT", "findSchool: " + error.getMessage());
+                        }
                 );
     }
 

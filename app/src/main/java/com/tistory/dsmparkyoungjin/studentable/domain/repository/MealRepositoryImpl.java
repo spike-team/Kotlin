@@ -2,7 +2,7 @@ package com.tistory.dsmparkyoungjin.studentable.domain.repository;
 
 import android.content.Context;
 
-import com.tistory.dsmparkyoungjin.studentable.data.MealData;
+import com.tistory.dsmparkyoungjin.studentable.data.MealResultData;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelper;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelperImpl;
 import com.tistory.dsmparkyoungjin.studentable.domain.remote.MealService;
@@ -29,7 +29,7 @@ public class MealRepositoryImpl implements MealRepository {
     }
 
     @Override
-    public Flowable<Response<MealData>> findMeal(String date) {
+    public Flowable<Response<MealResultData>> findMeal(String date) {
         return mService.findMeal(date, mPrefHelper.getSchoolCode());
     }
 }

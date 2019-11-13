@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -56,5 +57,20 @@ public class MealFragment extends Fragment implements MealContract.View {
         circleIndicator.setViewPager(viewpager);
 
         adapter.registerAdapterDataObserver(circleIndicator.getAdapterDataObserver());
+    }
+
+    @Override
+    public void showToastForError() {
+        Toast.makeText(getContext(), "급식을 불러올 수 없습니다", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showToastForStrangeData() {
+        Toast.makeText(getContext(), "학교 혹은 날짜가 잘못되었습니다. 설정을 확인해주세요", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showToastForNotFound() {
+        Toast.makeText(getContext(), "서버에서 급식을 찾을 수 없습니다", Toast.LENGTH_SHORT).show();
     }
 }
