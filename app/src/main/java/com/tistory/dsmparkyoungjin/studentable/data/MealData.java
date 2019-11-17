@@ -1,12 +1,12 @@
 package com.tistory.dsmparkyoungjin.studentable.data;
 
-import androidx.annotation.Nullable;
-
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class MealData {
+
+    private String day;
 
     private String date;
 
@@ -26,26 +26,43 @@ public class MealData {
         this.dinner = dinner;
     }
 
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
     public String getDate() {
         return date;
     }
 
-    @Nullable
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public List<String> getBreakfast() {
         return breakfast;
     }
 
-    @Nullable
+    public void setBreakfast(List<String> breakfast) {
+        this.breakfast = breakfast;
+    }
+
     public List<String> getLunch() {
         return lunch;
     }
 
-    @Nullable
+    public void setLunch(List<String> lunch) {
+        this.lunch = lunch;
+    }
+
     public List<String> getDinner() {
         return dinner;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDinner(List<String> dinner) {
+        this.dinner = dinner;
     }
 }

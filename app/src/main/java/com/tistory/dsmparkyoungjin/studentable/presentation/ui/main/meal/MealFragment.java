@@ -15,9 +15,10 @@ import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.data.MealData;
 import com.tistory.dsmparkyoungjin.studentable.presentation.adapter.MealAdapter;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-
-import me.relex.circleindicator.CircleIndicator3;
+import java.util.Locale;
 
 public class MealFragment extends Fragment implements MealContract.View {
 
@@ -47,16 +48,21 @@ public class MealFragment extends Fragment implements MealContract.View {
     @Override
     public void setItem(List<MealData> items) {
         MealAdapter adapter = new MealAdapter(items);
+        int todayIndex = Integer.parseInt(new SimpleDateFormat("dd", Locale.KOREA).format(new Date())) - 1;
 
         ViewPager2 viewpager = mCurrentView.findViewById(R.id.vp_meal);
         viewpager.setAdapter(adapter);
         viewpager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
+        viewpager.setCurrentItem(todayIndex);
 
-        CircleIndicator3 circleIndicator = mCurrentView.findViewById(R.id.ci_date);
-        circleIndicator.createIndicators(7, 0);
-        circleIndicator.setViewPager(viewpager);
-
-        adapter.registerAdapterDataObserver(circleIndicator.getAdapterDataObserver());
+//        CircleIndicator3 circleIndicator = mCurrentView.findViewById(R.id.ci_date);
+//        circleIndicator.createIndicators(
+//                adapter.getItemCount(),
+//                todayIndex
+//        );
+//        circleIndicator.setViewPager(viewpager);
+//
+//        adapter.registerAdapterDataObserver(circleIndicator.getAdapterDataObserver());
     }
 
     @Override

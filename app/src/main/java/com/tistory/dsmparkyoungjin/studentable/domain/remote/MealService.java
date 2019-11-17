@@ -9,5 +9,5 @@ import retrofit2.http.Query;
 
 public interface MealService {
     @GET("meal")
-    Flowable<Response<MealResultData>> findMeal(@Query("date") String date, @Query("schoolCode") String schoolCode);
+    Flowable<Response<MealResultData>> findMeal(@Query("date") String date, @Query("school_code") String schoolCode);
 }

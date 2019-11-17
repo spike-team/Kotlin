@@ -23,7 +23,7 @@ public class SetRepositoryImpl implements SetRepository {
     public SetRepositoryImpl(Context context) {
         mPrefHelper = new SetPrefHelperImpl(context);
         mService = new Retrofit.Builder()
-                .baseUrl("http://ec2.jaehoon.kim:8080/api/v1/school/")
+                .baseUrl("http://studentable.jaehoon.kim/api/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()

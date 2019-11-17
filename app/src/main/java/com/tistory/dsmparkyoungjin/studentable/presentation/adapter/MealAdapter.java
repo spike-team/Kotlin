@@ -54,8 +54,10 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealHolder> {
         void bind() {
             MealData item = mItems.get(getAdapterPosition());
 
+            TextView tvDay = mItemView.findViewById(R.id.tv_day);
             TextView tvDate = mItemView.findViewById(R.id.tv_date);
             tvDate.setText(item.getDate());
+            tvDay.setText(item.getDay());
 
             List[] itemList = new List[]{
                     item.getBreakfast(),

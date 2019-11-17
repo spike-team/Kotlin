@@ -10,6 +10,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface SetService {
-    @GET("search")
+    @GET("school")
     Flowable<Response<List<SchoolData>>> findSchool(@Query("key") String key);
 }

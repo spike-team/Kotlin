@@ -23,6 +23,6 @@ public interface MealContract {
 
         void init(View view);
 
-        List<MealData> findMeals();
+        void findMeals();
     }
 }
