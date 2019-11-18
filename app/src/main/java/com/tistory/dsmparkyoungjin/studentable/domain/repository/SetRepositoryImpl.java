@@ -2,13 +2,16 @@ package com.tistory.dsmparkyoungjin.studentable.domain.repository;
 
 import android.content.Context;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelper;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelperImpl;
 import com.tistory.dsmparkyoungjin.studentable.domain.remote.SetService;
 
 import java.util.List;
+import java.util.Objects;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -68,5 +71,25 @@ public class SetRepositoryImpl implements SetRepository {
     @Override
     public void saveAll() {
         mPrefHelper.saveAll();
+    }
+
+    @Override
+    public Flowable<Response<Completable>> setStudent(String deviceToken) {
+        return mService.setStudent(
+                Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail(),
+                deviceToken,
+                mPrefHelper.getSchoolCode(),
+                mPrefHelper.getGradeNo() + "-" + mPrefHelper.getClassNo()
+        );
+    }
+
+    @Override
+    public Boolean isSet() {
+        return mPrefHelper.isSet();
+    }
+
+    @Override
+    public void setGoogleAuth(String mGoogleEmail) {
+        mPrefHelper.setGoogleAuth(mGoogleEmail);
     }
 }

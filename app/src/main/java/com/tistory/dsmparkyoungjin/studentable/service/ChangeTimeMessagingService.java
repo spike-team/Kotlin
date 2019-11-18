@@ -15,6 +15,8 @@ import com.google.firebase.messaging.RemoteMessage;
 import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.NoticePrefHelper;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.NoticePrefHelperImpl;
+import com.tistory.dsmparkyoungjin.studentable.domain.repository.SetRepository;
+import com.tistory.dsmparkyoungjin.studentable.domain.repository.SetRepositoryImpl;
 
 import java.util.Objects;
 import java.util.Random;
@@ -75,6 +77,7 @@ public class ChangeTimeMessagingService extends FirebaseMessagingService {
     }
 
     private void refreshToken(String newToken) {
-        //TODO
+        SetRepository setRepository = new SetRepositoryImpl(getApplicationContext());
+        setRepository.setStudent(newToken);
     }
 }

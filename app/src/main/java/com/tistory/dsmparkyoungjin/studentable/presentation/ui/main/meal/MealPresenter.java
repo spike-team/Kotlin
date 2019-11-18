@@ -48,8 +48,7 @@ public class MealPresenter implements MealContract.Presenter {
                             switch (response.code()) {
                                 case 200:
                                     assert response.body() != null;
-                                    mView.setItem(
-                                            notMeal(getDates(response.body().getResult())));
+                                    mView.setItem(notMeal(getDates(response.body().getResult())));
                                     break;
                                 case 400:
                                     mView.showToastForStrangeData();

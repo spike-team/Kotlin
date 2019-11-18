@@ -2,16 +2,16 @@ package com.tistory.dsmparkyoungjin.studentable.presentation.ui.splash;
 
 import android.content.Context;
 
-import com.tistory.dsmparkyoungjin.studentable.domain.repository.SplashRepository;
-import com.tistory.dsmparkyoungjin.studentable.domain.repository.SplashRepositoryImpl;
+import com.tistory.dsmparkyoungjin.studentable.domain.repository.SetRepository;
+import com.tistory.dsmparkyoungjin.studentable.domain.repository.SetRepositoryImpl;
 
 public class SplashPresenter implements SplashContract.Presenter {
 
-    private SplashRepository mRepository;
+    private SetRepository mRepository;
     private SplashContract.View mView;
 
     SplashPresenter(Context context) {
-        mRepository = new SplashRepositoryImpl(context);
+        mRepository = new SetRepositoryImpl(context);
     }
 
     @Override

@@ -9,6 +9,9 @@ import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 public class SetPrefHelperImpl implements SetPrefHelper {
 
     private static final String PREFERENCE_NAME = "STUDENTABLE";
+
+    private static final String KEY_GOOGLE_AUTH = "GOOGLE_AUTH";
+
     private static final String KEY_SET_SCHOOL_NAME = "SET_SCHOOL_NAME";
     private static final String KEY_SET_SCHOOL_CODE = "SET_SCHOOL_CODE";
     private static final String KEY_SET_CLASS_NUMBER = "SET_CLASS_NUMBER";
@@ -27,6 +30,16 @@ public class SetPrefHelperImpl implements SetPrefHelper {
 
     public SetPrefHelperImpl(Context context) {
         mSharedPref = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
+    }
+
+    @Override
+    public Boolean isSet() {
+        return !(mSharedPref.getString(KEY_GOOGLE_AUTH, DEFVALUE_BLANK).isEmpty());
+    }
+
+    @Override
+    public void setGoogleAuth(String mGoogleAuth) {
+        mSharedPref.edit().putString(KEY_GOOGLE_AUTH, mGoogleAuth).apply();
     }
 
     @Override
@@ -63,6 +76,16 @@ public class SetPrefHelperImpl implements SetPrefHelper {
     @Override
     public void setClassNo(int classNo) {
         mSharedPref.edit().putInt(KEY_SET_CLASS_NUMBER, classNo).apply();
+    }
+
+    @Override
+    public int getGradeNo() {
+        return mSharedPref.getInt(KEY_GRADE_NUMBER, DEFVALUE_ZERO);
+    }
+
+    @Override
+    public int getClassNo() {
+        return mSharedPref.getInt(KEY_CLASS_NUMBER, DEFVALUE_ZERO);
     }
 
     @Override
