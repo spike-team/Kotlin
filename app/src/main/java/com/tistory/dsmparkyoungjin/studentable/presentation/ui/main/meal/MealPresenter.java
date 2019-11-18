@@ -48,7 +48,7 @@ public class MealPresenter implements MealContract.Presenter {
                             switch (response.code()) {
                                 case 200:
                                     assert response.body() != null;
-                                    mView.setItem(notMeal(getDates(response.body().getResult())));
+                                    mView.setItem(getDates(response.body().getResult()));
                                     break;
                                 case 400:
                                     mView.showToastForStrangeData();
@@ -102,20 +102,6 @@ public class MealPresenter implements MealContract.Presenter {
                 e.printStackTrace();
             }
         }
-        return meals;
-    }
-
-    private List<MealData> notMeal(List<MealData> meals) {
-        for (int i = 0; i < meals.size(); i++) {
-            MealData meal = meals.get(i);
-            if (meal.getBreakfast().get(0).equals("급식이 없습니다."))
-                meal.setBreakfast(null);
-            if (meal.getLunch().get(0).equals("급식이 없습니다."))
-                meal.setLunch(null);
-            if (meal.getDinner().get(0).equals("급식이 없습니다."))
-                meal.setDinner(null);
-        }
-
         return meals;
     }
 }

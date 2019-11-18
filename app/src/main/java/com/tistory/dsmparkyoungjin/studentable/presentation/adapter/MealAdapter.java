@@ -3,7 +3,6 @@ package com.tistory.dsmparkyoungjin.studentable.presentation.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -69,11 +68,6 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealHolder> {
                     mItemView.findViewById(R.id.tv_listLunch),
                     mItemView.findViewById(R.id.tv_listDinner)};
 
-            RelativeLayout[] containerArray = {
-                    mItemView.findViewById(R.id.rl_breakfast),
-                    mItemView.findViewById(R.id.rl_lunch),
-                    mItemView.findViewById(R.id.rl_dinner)};
-
             StringBuilder strBuilder = new StringBuilder();
 
             for (int i = BREAKFAST; i <= DINNER; i++) {
@@ -83,8 +77,6 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealHolder> {
                         strBuilder.append(itemList[i].get(j)).append(" ");
                     }
                     itemViewArray[i].setText(strBuilder);
-                } else {
-                    containerArray[i].setVisibility(View.GONE);
                 }
             }
         }

@@ -77,7 +77,8 @@ public class ChangeTimeMessagingService extends FirebaseMessagingService {
     }
 
     private void refreshToken(String newToken) {
-        SetRepository setRepository = new SetRepositoryImpl(getApplicationContext());
-        setRepository.setStudent(newToken);
+            SetRepository setRepository = new SetRepositoryImpl(getApplicationContext());
+            if (setRepository.isSet())
+            setRepository.setStudent(newToken);
     }
 }
