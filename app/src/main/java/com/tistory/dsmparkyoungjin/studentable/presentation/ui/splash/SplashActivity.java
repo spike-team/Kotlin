@@ -20,6 +20,8 @@ import com.tistory.dsmparkyoungjin.studentable.presentation.ui.set.base.SetActiv
 
 import java.util.Objects;
 
+import io.realm.Realm;
+
 public class SplashActivity extends AppCompatActivity implements SplashContract.View {
 
     private SplashContract.Presenter mPresenter;
@@ -54,15 +56,20 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     }
 
     @Override
-    public void initView() { splash(); }
+    public void initView() {
+        initRealm();
+        splash();
+    }
 
     @Override
-    public String getGoogleAuth() { return mGoogleAuth; }
+    public String getGoogleAuth() {
+        return mGoogleAuth;
+    }
 
     private void splash() {
         new Handler().postDelayed(() -> {
             if (mPresenter.isSet()) startMainActivity();
-            else                    googleAuthSignIn();
+            else googleAuthSignIn();
         }, 800);
     }
 
@@ -84,5 +91,9 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     private void startMainActivity() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+
+    private void initRealm() {
+        Realm.init(this);
     }
 }

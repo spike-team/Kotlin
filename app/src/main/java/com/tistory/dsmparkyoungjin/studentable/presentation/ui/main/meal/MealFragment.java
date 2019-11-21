@@ -54,15 +54,6 @@ public class MealFragment extends Fragment implements MealContract.View {
         viewpager.setAdapter(adapter);
         viewpager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         viewpager.setCurrentItem(todayIndex);
-
-//        CircleIndicator3 circleIndicator = mCurrentView.findViewById(R.id.ci_date);
-//        circleIndicator.createIndicators(
-//                adapter.getItemCount(),
-//                todayIndex
-//        );
-//        circleIndicator.setViewPager(viewpager);
-//
-//        adapter.registerAdapterDataObserver(circleIndicator.getAdapterDataObserver());
     }
 
     @Override

@@ -4,7 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MealData {
+import io.realm.RealmObject;
+
+public class MealData extends RealmObject {
 
     private String day;
 

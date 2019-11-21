@@ -63,7 +63,7 @@ public class MealPresenter implements MealContract.Presenter {
     }
 
     private String getToday() {
-        return new SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(new Date());
+        return new SimpleDateFormat("yyyy-MM", Locale.KOREA).format(new Date()) + "-01";
     }
 
     private static String getDay(String date) throws ParseException {

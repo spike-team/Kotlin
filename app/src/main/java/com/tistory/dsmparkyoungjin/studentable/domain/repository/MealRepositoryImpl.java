@@ -3,6 +3,8 @@ package com.tistory.dsmparkyoungjin.studentable.domain.repository;
 import android.content.Context;
 
 import com.tistory.dsmparkyoungjin.studentable.data.MealResultData;
+import com.tistory.dsmparkyoungjin.studentable.domain.local.MealDao;
+import com.tistory.dsmparkyoungjin.studentable.domain.local.MealDaoImpl;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelper;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelperImpl;
 import com.tistory.dsmparkyoungjin.studentable.domain.remote.MealService;
@@ -17,6 +19,7 @@ public class MealRepositoryImpl implements MealRepository {
 
     private SetPrefHelper mPrefHelper;
     private MealService mService;
+    private MealDao mDao;
 
     public MealRepositoryImpl(Context context) {
         mPrefHelper = new SetPrefHelperImpl(context);
@@ -26,6 +29,7 @@ public class MealRepositoryImpl implements MealRepository {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
                 .create(MealService.class);
+        mDao = new MealDaoImpl();
     }
 
     @Override
