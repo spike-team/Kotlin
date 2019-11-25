@@ -8,9 +8,6 @@ import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 import com.tistory.dsmparkyoungjin.studentable.domain.repository.SetRepository;
 import com.tistory.dsmparkyoungjin.studentable.domain.repository.SetRepositoryImpl;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
-
 public class SelectSchPresenter implements SelectSchContract.Presenter {
 
     private SelectSchContract.View mView;
@@ -31,8 +28,6 @@ public class SelectSchPresenter implements SelectSchContract.Presenter {
     @Override
     public void findSchool() {
         mRepository.findSchool()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(
                         response -> {
                             switch (response.code()) {

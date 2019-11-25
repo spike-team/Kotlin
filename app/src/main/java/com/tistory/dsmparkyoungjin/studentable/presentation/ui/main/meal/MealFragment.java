@@ -12,13 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
-import com.tistory.dsmparkyoungjin.studentable.data.MealData;
+import com.tistory.dsmparkyoungjin.studentable.data.MealRealm;
 import com.tistory.dsmparkyoungjin.studentable.presentation.adapter.MealAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
+
+import io.realm.RealmList;
 
 public class MealFragment extends Fragment implements MealContract.View {
 
@@ -46,7 +47,7 @@ public class MealFragment extends Fragment implements MealContract.View {
     }
 
     @Override
-    public void setItem(List<MealData> items) {
+    public void setItem(RealmList<MealRealm> items) {
         MealAdapter adapter = new MealAdapter(items);
         int todayIndex = Integer.parseInt(new SimpleDateFormat("dd", Locale.KOREA).format(new Date())) - 1;
 

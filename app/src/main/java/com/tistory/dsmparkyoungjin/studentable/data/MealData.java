@@ -4,9 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import io.realm.RealmObject;
-
-public class MealData extends RealmObject {
+public class MealData {
 
     private String day;
 
@@ -28,7 +26,7 @@ public class MealData extends RealmObject {
         this.dinner = dinner;
     }
 
-    public String getDay() {
+    String getDay() {
         return day;
     }
 
@@ -44,7 +42,7 @@ public class MealData extends RealmObject {
         this.date = date;
     }
 
-    public List<String> getBreakfast() {
+    List<String> getBreakfast() {
         return breakfast;
     }
 
@@ -52,7 +50,7 @@ public class MealData extends RealmObject {
         this.breakfast = breakfast;
     }
 
-    public List<String> getLunch() {
+    List<String> getLunch() {
         return lunch;
     }
 
@@ -60,7 +58,7 @@ public class MealData extends RealmObject {
         this.lunch = lunch;
     }
 
-    public List<String> getDinner() {
+    List<String> getDinner() {
         return dinner;
     }
 

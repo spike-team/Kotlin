@@ -9,19 +9,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
-import com.tistory.dsmparkyoungjin.studentable.data.MealData;
+import com.tistory.dsmparkyoungjin.studentable.data.MealRealm;
 
 import java.util.List;
 
+import io.realm.RealmList;
+
 public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealHolder> {
 
-    private List<MealData> mItems;
+    private RealmList<MealRealm> mItems;
 
     private static final int BREAKFAST = 0;
     private static final int LUNCH = 1;
     private static final int DINNER = 2;
 
-    public MealAdapter(List<MealData> items) {
+    public MealAdapter(RealmList<MealRealm> items) {
         mItems = items;
     }
 
@@ -51,10 +53,11 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealHolder> {
         }
 
         void bind() {
-            MealData item = mItems.get(getAdapterPosition());
+            MealRealm item = mItems.get(getAdapterPosition());
 
             TextView tvDay = mItemView.findViewById(R.id.tv_day);
             TextView tvDate = mItemView.findViewById(R.id.tv_date);
+            assert item != null;
             tvDate.setText(item.getDate());
             tvDay.setText(item.getDay());
 

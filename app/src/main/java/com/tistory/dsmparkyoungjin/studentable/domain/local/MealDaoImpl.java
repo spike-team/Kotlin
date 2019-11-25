@@ -1,6 +1,10 @@
 package com.tistory.dsmparkyoungjin.studentable.domain.local;
 
+import android.util.Log;
+
+import com.tistory.dsmparkyoungjin.studentable.data.MealMapper;
 import com.tistory.dsmparkyoungjin.studentable.data.MealResultData;
+import com.tistory.dsmparkyoungjin.studentable.data.MealResultRealm;
 
 import io.realm.Realm;
 
@@ -10,13 +14,17 @@ public class MealDaoImpl implements MealDao {
 
     @Override
     public void setCache(MealResultData data) {
+        Log.d("TT", "setCache: " + data.getCode());
         mRealm.beginTransaction();
-        mRealm.copyToRealm(data);
+        mRealm.copyToRealm(MealMapper.toMealResultRealm(data));
         mRealm.commitTransaction();
     }
 
     @Override
-    public MealResultData getCache(String date) {
-        return mRealm.where(MealResultData.class).equalTo("date", date).findFirst();
+    public MealResultRealm getCache(String date, String code) {
+        return mRealm.where(MealResultRealm.class)
+                .equalTo("code", code)
+                .equalTo("date", date)
+                .findFirst();
     }
 }
