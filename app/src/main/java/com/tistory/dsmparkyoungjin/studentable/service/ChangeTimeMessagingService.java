@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -77,8 +78,19 @@ public class ChangeTimeMessagingService extends FirebaseMessagingService {
     }
 
     private void refreshToken(String newToken) {
-            SetRepository setRepository = new SetRepositoryImpl(getApplicationContext());
-            if (setRepository.isSet())
-            setRepository.setStudent(newToken);
+        SetRepository setRepository = new SetRepositoryImpl(getApplicationContext());
+        if (setRepository.isSet())
+            setRepository.setStudent(newToken)
+                    .subscribe(
+                            result -> {
+                                switch (result.code()) {
+                                    case 201:
+                                        break;
+                                    case 404:
+                                        Toast.makeText(this, "없는 계정입니다.\n", Toast.LENGTH_SHORT).show();
+                                        break;
+                                }
+                            }, error -> Toast.makeText(this, "토큰 새로고침을 할 수 없습니다", Toast.LENGTH_SHORT).show()
+                    );
     }
 }

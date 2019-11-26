@@ -13,6 +13,8 @@ import java.util.Objects;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -50,7 +52,9 @@ public class SetRepositoryImpl implements SetRepository {
 
     @Override
     public Flowable<Response<List<SchoolData>>> findSchool() {
-        return mService.findSchool(mPrefHelper.getSearch());
+        return mService.findSchool(mPrefHelper.getSearch())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io());
     }
 
     @Override
@@ -80,7 +84,9 @@ public class SetRepositoryImpl implements SetRepository {
                 deviceToken,
                 mPrefHelper.getSchoolCode(),
                 mPrefHelper.getGradeNo() + "-" + mPrefHelper.getClassNo()
-        );
+        )
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io());
     }
 
     @Override

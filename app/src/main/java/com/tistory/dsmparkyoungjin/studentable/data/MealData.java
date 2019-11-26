@@ -26,7 +26,7 @@ public class MealData {
         this.dinner = dinner;
     }
 
-    public String getDay() {
+    String getDay() {
         return day;
     }
 
@@ -42,7 +42,7 @@ public class MealData {
         this.date = date;
     }
 
-    public List<String> getBreakfast() {
+    List<String> getBreakfast() {
         return breakfast;
     }
 
@@ -50,7 +50,7 @@ public class MealData {
         this.breakfast = breakfast;
     }
 
-    public List<String> getLunch() {
+    List<String> getLunch() {
         return lunch;
     }
 
@@ -58,7 +58,7 @@ public class MealData {
         this.lunch = lunch;
     }
 
-    public List<String> getDinner() {
+    List<String> getDinner() {
         return dinner;
     }
 

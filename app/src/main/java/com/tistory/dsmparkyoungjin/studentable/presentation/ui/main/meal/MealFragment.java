@@ -12,13 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.tistory.dsmparkyoungjin.studentable.R;
-import com.tistory.dsmparkyoungjin.studentable.data.MealData;
+import com.tistory.dsmparkyoungjin.studentable.data.MealRealm;
 import com.tistory.dsmparkyoungjin.studentable.presentation.adapter.MealAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
+
+import io.realm.RealmList;
 
 public class MealFragment extends Fragment implements MealContract.View {
 
@@ -36,6 +37,12 @@ public class MealFragment extends Fragment implements MealContract.View {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.findMeals();
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         mPresenter = new MealPresenter(getContext());
         mPresenter.init(this);
@@ -46,7 +53,17 @@ public class MealFragment extends Fragment implements MealContract.View {
     }
 
     @Override
-    public void setItem(List<MealData> items) {
+    public void visibleProgress() {
+        mCurrentView.findViewById(R.id.pb_meal).setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void invisibleProgress() {
+        mCurrentView.findViewById(R.id.pb_meal).setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setItem(RealmList<MealRealm> items) {
         MealAdapter adapter = new MealAdapter(items);
         int todayIndex = Integer.parseInt(new SimpleDateFormat("dd", Locale.KOREA).format(new Date())) - 1;
 
@@ -54,15 +71,6 @@ public class MealFragment extends Fragment implements MealContract.View {
         viewpager.setAdapter(adapter);
         viewpager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         viewpager.setCurrentItem(todayIndex);
-
-//        CircleIndicator3 circleIndicator = mCurrentView.findViewById(R.id.ci_date);
-//        circleIndicator.createIndicators(
-//                adapter.getItemCount(),
-//                todayIndex
-//        );
-//        circleIndicator.setViewPager(viewpager);
-//
-//        adapter.registerAdapterDataObserver(circleIndicator.getAdapterDataObserver());
     }
 
     @Override

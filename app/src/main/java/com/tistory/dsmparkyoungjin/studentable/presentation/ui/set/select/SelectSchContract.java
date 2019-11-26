@@ -12,6 +12,10 @@ public interface SelectSchContract {
 
         void setItems(List<SchoolData> items);
 
+        void visibleProgress();
+
+        void invisibleProgress();
+
         void showToastForNotFound();
 
         void showToastForNotConnectInternet();

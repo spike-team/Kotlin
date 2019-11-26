@@ -1,8 +1,8 @@
 package com.tistory.dsmparkyoungjin.studentable.presentation.ui.main.meal;
 
-import com.tistory.dsmparkyoungjin.studentable.data.MealData;
+import com.tistory.dsmparkyoungjin.studentable.data.MealRealm;
 
-import java.util.List;
+import io.realm.RealmList;
 
 public interface MealContract {
 
@@ -10,7 +10,11 @@ public interface MealContract {
 
         void initView();
 
-        void setItem(List<MealData> items);
+        void visibleProgress();
+
+        void invisibleProgress();
+
+        void setItem(RealmList<MealRealm> items);
 
         void showToastForError();
 
