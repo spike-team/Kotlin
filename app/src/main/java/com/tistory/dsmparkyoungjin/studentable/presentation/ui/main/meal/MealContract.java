@@ -10,6 +10,10 @@ public interface MealContract {
 
         void initView();
 
+        void visibleProgress();
+
+        void invisibleProgress();
+
         void setItem(RealmList<MealRealm> items);
 
         void showToastForError();

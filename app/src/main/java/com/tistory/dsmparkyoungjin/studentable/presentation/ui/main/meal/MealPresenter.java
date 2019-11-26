@@ -30,16 +30,22 @@ public class MealPresenter implements MealContract.Presenter {
     @Override
     public void findMeals() {
         if (mRepository.isExist(getToday())) {
+            mView.visibleProgress();
             mView.setItem(mRepository.getMeals(getToday()).getList());
+            mView.invisibleProgress();
         } else {
+            mView.visibleProgress();
             mRepository.findMeals(getToday())
+                    .doOnSubscribe(notUsed -> mView.visibleProgress())
+                    .doOnTerminate(() -> mView.invisibleProgress())
                     .subscribe(
                             response -> {
-                                switch(response.code()) {
+                                switch (response.code()) {
                                     case 200:
                                         assert response.body() != null;
                                         mRepository.cache(response.body().date(getToday()));
                                         mView.setItem(mRepository.getMeals(getToday()).getList());
+                                        mView.invisibleProgress();
                                         break;
                                     case 400:
                                         mView.showToastForStrangeData();

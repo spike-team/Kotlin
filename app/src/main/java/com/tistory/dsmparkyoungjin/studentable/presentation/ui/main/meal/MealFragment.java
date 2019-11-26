@@ -37,6 +37,12 @@ public class MealFragment extends Fragment implements MealContract.View {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.findMeals();
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         mPresenter = new MealPresenter(getContext());
         mPresenter.init(this);
@@ -44,6 +50,16 @@ public class MealFragment extends Fragment implements MealContract.View {
 
     @Override
     public void initView() {
+    }
+
+    @Override
+    public void visibleProgress() {
+        mCurrentView.findViewById(R.id.pb_meal).setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void invisibleProgress() {
+        mCurrentView.findViewById(R.id.pb_meal).setVisibility(View.GONE);
     }
 
     @Override

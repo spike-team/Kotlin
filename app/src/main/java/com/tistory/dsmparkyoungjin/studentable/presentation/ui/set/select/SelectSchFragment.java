@@ -56,6 +56,16 @@ public class SelectSchFragment extends Fragment implements SelectSchContract.Vie
     }
 
     @Override
+    public void visibleProgress() {
+        mCurrentView.findViewById(R.id.pb_select).setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void invisibleProgress() {
+        mCurrentView.findViewById(R.id.pb_select).setVisibility(View.INVISIBLE);
+    }
+
+    @Override
     public void showToastForNotFound() {
         Toast.makeText(getContext(), "찾을 수 없는 학교 이름입니다", Toast.LENGTH_SHORT).show();
         onPrevious();
