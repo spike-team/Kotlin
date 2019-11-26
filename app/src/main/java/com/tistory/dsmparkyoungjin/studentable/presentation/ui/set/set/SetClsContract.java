@@ -12,7 +12,10 @@ public interface SetClsContract {
 
         int getClassNo();
 
+        void showToastForSetNumber();
+
         void onNextSave();
+
     }
 
     interface Presenter {

@@ -2,11 +2,9 @@ package com.tistory.dsmparkyoungjin.studentable.data;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
 public class MealResultRealm extends RealmObject {
 
-    @PrimaryKey
     private String code;
     private String date;
 

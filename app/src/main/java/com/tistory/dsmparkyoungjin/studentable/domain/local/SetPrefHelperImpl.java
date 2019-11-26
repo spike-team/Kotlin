@@ -12,16 +12,17 @@ public class SetPrefHelperImpl implements SetPrefHelper {
 
     private static final String KEY_GOOGLE_AUTH = "GOOGLE_AUTH";
 
-    private static final String KEY_SET_SCHOOL_NAME = "SET_SCHOOL_NAME";
-    private static final String KEY_SET_SCHOOL_CODE = "SET_SCHOOL_CODE";
-    private static final String KEY_SET_CLASS_NUMBER = "SET_CLASS_NUMBER";
-    private static final String KEY_SET_GRADE_NUMBER = "SET_GRADE_NUMBER";
-
     private static final String KEY_SCHOOL_SEARCH = "SCHOOL_SEARCH";
+
     private static final String KEY_SCHOOL_NAME = "SCHOOL_NAME";
     private static final String KEY_SCHOOL_CODE = "SCHOOL_CODE";
     private static final String KEY_GRADE_NUMBER = "GRADE_NUMBER";
     private static final String KEY_CLASS_NUMBER = "CLASS_NUMBER";
+
+    private static final String KEY_SET_SCHOOL_NAME = "SET_SCHOOL_NAME";
+    private static final String KEY_SET_SCHOOL_CODE = "SET_SCHOOL_CODE";
+    private static final String KEY_SET_CLASS_NUMBER = "SET_CLASS_NUMBER";
+    private static final String KEY_SET_GRADE_NUMBER = "SET_GRADE_NUMBER";
 
     private static final String DEFVALUE_BLANK = "";
     private static final int DEFVALUE_ZERO = 0;
@@ -34,7 +35,7 @@ public class SetPrefHelperImpl implements SetPrefHelper {
 
     @Override
     public Boolean isSet() {
-        return !(mSharedPref.getString(KEY_GOOGLE_AUTH, DEFVALUE_BLANK).isEmpty());
+        return !(mSharedPref.getString(KEY_SCHOOL_CODE, DEFVALUE_BLANK).isEmpty());
     }
 
     @Override

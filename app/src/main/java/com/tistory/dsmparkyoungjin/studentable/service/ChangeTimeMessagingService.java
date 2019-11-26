@@ -90,7 +90,7 @@ public class ChangeTimeMessagingService extends FirebaseMessagingService {
                                         Toast.makeText(this, "없는 계정입니다.\n", Toast.LENGTH_SHORT).show();
                                         break;
                                 }
-                            }, error -> Toast.makeText(this, "토큰 새로고침을 할 수 없습니다", Toast.LENGTH_SHORT).show()
+                            }, error -> Toast.makeText(this, "토큰을 새로고침 할 수 없습니다", Toast.LENGTH_SHORT).show()
                     );
     }
 }

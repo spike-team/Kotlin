@@ -23,6 +23,12 @@ public class SetClsPresenter implements SetClsContract.Presenter {
 
     @Override
     public void save() {
+        if (mView.getGradeNo() == 0 ||
+                mView.getClassNo() == 0) {
+            mView.showToastForSetNumber();
+            return;
+        }
+
         mRepository.setGradeNo(mView.getGradeNo());
         mRepository.setClassNo(mView.getClassNo());
         mRepository.saveAll();

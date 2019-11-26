@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -62,13 +63,16 @@ public class SetClsFragment extends Fragment implements SetClsContract.View {
     }
 
     @Override
+    public void showToastForSetNumber() {
+        Toast.makeText(getContext(), "학년 반을 설정해 주세요.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void onNextSave() {
         ((SetActivity) Objects.requireNonNull(getActivity())).onNextSet();
     }
 
     private void initSaveButton() {
-        mCurrentView.findViewById(R.id.btn_save).setOnClickListener(
-                v -> mPresenter.save()
-        );
+        mCurrentView.findViewById(R.id.btn_save).setOnClickListener(v -> mPresenter.save());
     }
 }
