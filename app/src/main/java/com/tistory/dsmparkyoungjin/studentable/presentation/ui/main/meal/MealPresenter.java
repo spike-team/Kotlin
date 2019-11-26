@@ -38,7 +38,7 @@ public class MealPresenter implements MealContract.Presenter {
                                 switch(response.code()) {
                                     case 200:
                                         assert response.body() != null;
-                                        mRepository.cache(response.body());
+                                        mRepository.cache(response.body().date(getToday()));
                                         mView.setItem(mRepository.getMeals(getToday()).getList());
                                         break;
                                     case 400:
@@ -50,7 +50,8 @@ public class MealPresenter implements MealContract.Presenter {
                                     default:
                                         mView.showToastForError();
                                 }
-                            }
+                            },
+                            error -> mView.showToastForError()
                     );
         }
     }

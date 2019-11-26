@@ -32,7 +32,17 @@ public class MealResultData {
         return this;
     }
 
-    List<MealData> getResult() {
+    public MealResultData code(String code) {
+        this.code = code;
+        return this;
+    }
+
+    public MealResultData list(List<MealData> list) {
+        this.result = list;
+        return this;
+    }
+
+    public List<MealData> getResult() {
         return result;
     }
 }

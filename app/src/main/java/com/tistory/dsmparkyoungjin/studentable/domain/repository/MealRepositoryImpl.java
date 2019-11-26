@@ -67,7 +67,7 @@ public class MealRepositoryImpl implements MealRepository {
 
     @Override
     public void cache(MealResultData data) {
-        mDao.setCache(data);
+        mDao.setCache(data.code(mPrefHelper.getSchoolCode()).list(getDates(data.getResult())));
     }
 
     private static String getDay(String date) throws ParseException {
