@@ -12,8 +12,8 @@
         android:layout_height="0dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
         android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@id/v_virtual_fab"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -33,7 +33,8 @@
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/text_monday"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
@@ -42,7 +43,8 @@
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/text_tuesday"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
@@ -51,7 +53,8 @@
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/text_wednesday"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
@@ -60,7 +63,8 @@
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/text_thursday"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="0dp"
@@ -69,7 +73,8 @@
                 android:background="@drawable/bg_time_topright"
                 android:gravity="center"
                 android:text="@string/text_friday"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
         </TableRow>
 
@@ -83,7 +88,8 @@
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/text_1"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_subject_11"
@@ -92,6 +98,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -101,6 +108,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -110,6 +118,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -119,6 +128,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -128,6 +138,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
         </TableRow>
@@ -142,7 +153,8 @@
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/text_2"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_subject_12"
@@ -151,6 +163,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -160,6 +173,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -169,6 +183,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -178,6 +193,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -187,6 +203,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
         </TableRow>
@@ -201,7 +218,8 @@
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/text_3"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_subject_13"
@@ -210,6 +228,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -219,6 +238,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -228,6 +248,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -237,6 +258,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -246,6 +268,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
         </TableRow>
@@ -260,7 +283,8 @@
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/text_4"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_subject_14"
@@ -269,6 +293,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -278,6 +303,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -287,6 +313,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -296,6 +323,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -305,6 +333,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
         </TableRow>
@@ -319,7 +348,8 @@
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/text_5"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_subject_15"
@@ -328,6 +358,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -337,6 +368,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -346,6 +378,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -355,6 +388,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -364,6 +398,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
         </TableRow>
@@ -378,7 +413,8 @@
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/text_6"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_subject_16"
@@ -387,6 +423,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -396,6 +433,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -405,6 +443,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -414,6 +453,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -423,6 +463,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
         </TableRow>
@@ -437,7 +478,8 @@
                 android:background="@drawable/bg_time_bottomleft"
                 android:gravity="center"
                 android:text="@string/text_7"
-                android:textColor="@color/colorWhiteTrue" />
+                android:textColor="@color/colorWhiteTrue"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_subject_17"
@@ -446,6 +488,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -455,6 +498,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -464,6 +508,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -473,6 +518,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryLight"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
             <TextView
@@ -482,6 +528,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_time_bottomright"
                 android:gravity="center"
+                android:lineSpacingExtra="12dp"
                 android:textColor="@color/colorBlackTrue" />
 
         </TableRow>
