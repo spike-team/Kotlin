@@ -4,7 +4,6 @@ import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 
 import java.util.List;
 
-import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import retrofit2.Response;
 
@@ -12,17 +11,11 @@ public interface SetRepository {
 
     Boolean isSet();
 
-    String getGoogleAuth();
-
     void setGoogleAuth(String mGoogleAuth);
-
-    String getDeviceToken();
 
     void setDeviceToken(String mDeviceToken);
 
     void setSearch(String search);
-
-    String getSearch();
 
     String getSchoolName();
 
@@ -36,5 +29,5 @@ public interface SetRepository {
 
     void saveAll();
 
-    Flowable<Response<Completable>> setStudent(String deviceToken);
+    Flowable<Response<Void>> setStudent();
 }

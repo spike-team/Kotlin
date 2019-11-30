@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
@@ -80,6 +81,9 @@ public class ChangeTimeMessagingService extends FirebaseMessagingService {
         SetRepository setRepository = new SetRepositoryImpl(getApplicationContext());
         setRepository.setDeviceToken(newToken);
         if (setRepository.isSet())
-            setRepository.setStudent(newToken).subscribe();
+            setRepository.setStudent().subscribe(
+                    response -> Log.d("TT", "refreshToken: " + response.code()),
+                    error -> Log.d("TT", "refreshToken: "+ error.getMessage())
+            );
     }
 }

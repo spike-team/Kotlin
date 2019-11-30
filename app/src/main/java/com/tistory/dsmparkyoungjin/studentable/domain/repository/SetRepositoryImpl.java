@@ -1,9 +1,9 @@
 package com.tistory.dsmparkyoungjin.studentable.domain.repository;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
 import com.tistory.dsmparkyoungjin.studentable.data.StudentData;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelper;
@@ -11,9 +11,7 @@ import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelperImpl;
 import com.tistory.dsmparkyoungjin.studentable.domain.remote.SetService;
 
 import java.util.List;
-import java.util.Objects;
 
-import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -43,11 +41,6 @@ public class SetRepositoryImpl implements SetRepository {
     }
 
     @Override
-    public String getSearch() {
-        return mPrefHelper.getSearch();
-    }
-
-    @Override
     public String getSchoolName() {
         return mPrefHelper.getSchoolName();
     }
@@ -74,32 +67,25 @@ public class SetRepositoryImpl implements SetRepository {
         mPrefHelper.setClassNo(classNo);
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void saveAll() {
         mPrefHelper.saveAll();
-        mService.postStudent(new StudentData(
-                mPrefHelper.getDeviceToken(),
-                mPrefHelper.getSchoolCode(),
-                mPrefHelper.getGradeNo() + "-" + mPrefHelper.getClassNo(),
-                mPrefHelper.getGoogleAuth()
-        )).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        response -> Log.d("TT", "saveAll: " + response.code()),
-                        error -> Log.d("TT", "saveAll: error" + error.getMessage())
-                );
+        setStudent().subscribe(
+                response -> Log.d("TT", "saveAll: " + response.code()),
+                error -> Log.d("TT", "saveAll: " + error.getMessage())
+        );
     }
 
     @Override
-    public Flowable<Response<Completable>> setStudent(String deviceToken) {
-        return
-                mService.postStudent(new StudentData(
-                        Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail(),
-                        deviceToken,
-                        mPrefHelper.getSchoolCode(),
-                        mPrefHelper.getGradeNo() + "-" + mPrefHelper.getClassNo())
-                ).observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.io());
+    public Flowable<Response<Void>> setStudent() {
+        return mService.putStudent(new StudentData(
+                mPrefHelper.getDeviceToken(),
+                mPrefHelper.getSchoolCode(),
+                (mPrefHelper.getGradeNo() + "-" + mPrefHelper.getClassNo()),
+                mPrefHelper.getGoogleAuth()
+        )).observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io());
     }
 
     @Override
@@ -108,18 +94,8 @@ public class SetRepositoryImpl implements SetRepository {
     }
 
     @Override
-    public String getGoogleAuth() {
-        return mPrefHelper.getGoogleAuth();
-    }
-
-    @Override
     public void setGoogleAuth(String mGoogleEmail) {
         mPrefHelper.setGoogleAuth(mGoogleEmail);
-    }
-
-    @Override
-    public String getDeviceToken() {
-        return mPrefHelper.getDeviceToken();
     }
 
     @Override
