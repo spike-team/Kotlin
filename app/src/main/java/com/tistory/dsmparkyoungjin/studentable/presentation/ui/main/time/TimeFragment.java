@@ -1,6 +1,8 @@
 package com.tistory.dsmparkyoungjin.studentable.presentation.ui.main.time;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +55,7 @@ public class TimeFragment extends Fragment implements TimeContract.View {
         mCurrentView.findViewById(R.id.pb_time).setVisibility(View.GONE);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void setItem(RealmList<String> items) {
         Log.d("TT", "setItem: 오긴함?");
@@ -96,9 +99,9 @@ public class TimeFragment extends Fragment implements TimeContract.View {
 
         for (int i = 0; i < 5; i++)
             for (int j = 0; j < 7; j++)
-                subjectViews[i * 7 + j].setText(
-                        Objects.requireNonNull(items.get(i * 7 + j))
-                                .replace("/", "\n")
+                subjectViews[i * 7 + j].setText(Html.fromHtml(
+                        "<b>" + Objects.requireNonNull(items.get(i * 7 + j))
+                                .replace("/", "</b><br>"))
                 );
     }
 
