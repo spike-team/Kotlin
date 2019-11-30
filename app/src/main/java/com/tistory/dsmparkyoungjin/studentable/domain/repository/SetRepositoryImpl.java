@@ -1,9 +1,11 @@
 package com.tistory.dsmparkyoungjin.studentable.domain.repository;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.tistory.dsmparkyoungjin.studentable.data.SchoolData;
+import com.tistory.dsmparkyoungjin.studentable.data.StudentData;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelper;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.SetPrefHelperImpl;
 import com.tistory.dsmparkyoungjin.studentable.domain.remote.SetService;
@@ -75,18 +77,29 @@ public class SetRepositoryImpl implements SetRepository {
     @Override
     public void saveAll() {
         mPrefHelper.saveAll();
+        mService.postStudent(new StudentData(
+                mPrefHelper.getDeviceToken(),
+                mPrefHelper.getSchoolCode(),
+                mPrefHelper.getGradeNo() + "-" + mPrefHelper.getClassNo(),
+                mPrefHelper.getGoogleAuth()
+        )).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        response -> Log.d("TT", "saveAll: " + response.code()),
+                        error -> Log.d("TT", "saveAll: error" + error.getMessage())
+                );
     }
 
     @Override
     public Flowable<Response<Completable>> setStudent(String deviceToken) {
-        return mService.setStudent(
-                Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail(),
-                deviceToken,
-                mPrefHelper.getSchoolCode(),
-                mPrefHelper.getGradeNo() + "-" + mPrefHelper.getClassNo()
-        )
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io());
+        return
+                mService.postStudent(new StudentData(
+                        Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail(),
+                        deviceToken,
+                        mPrefHelper.getSchoolCode(),
+                        mPrefHelper.getGradeNo() + "-" + mPrefHelper.getClassNo())
+                ).observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io());
     }
 
     @Override
@@ -95,7 +108,22 @@ public class SetRepositoryImpl implements SetRepository {
     }
 
     @Override
+    public String getGoogleAuth() {
+        return mPrefHelper.getGoogleAuth();
+    }
+
+    @Override
     public void setGoogleAuth(String mGoogleEmail) {
         mPrefHelper.setGoogleAuth(mGoogleEmail);
+    }
+
+    @Override
+    public String getDeviceToken() {
+        return mPrefHelper.getDeviceToken();
+    }
+
+    @Override
+    public void setDeviceToken(String mDeviceToken) {
+        mPrefHelper.setDeviceToken(mDeviceToken);
     }
 }

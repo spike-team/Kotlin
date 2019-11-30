@@ -12,7 +12,13 @@ public interface SetRepository {
 
     Boolean isSet();
 
-    void setGoogleAuth(String mGoogleEmail);
+    String getGoogleAuth();
+
+    void setGoogleAuth(String mGoogleAuth);
+
+    String getDeviceToken();
+
+    void setDeviceToken(String mDeviceToken);
 
     void setSearch(String search);
 

@@ -6,7 +6,13 @@ public interface SetPrefHelper {
 
     Boolean isSet();
 
+    String getGoogleAuth();
+
     void setGoogleAuth(String mGoogleAuth);
+
+    String getDeviceToken();
+
+    void setDeviceToken(String mDeviceToken);
 
     void setSearch(String search);
 

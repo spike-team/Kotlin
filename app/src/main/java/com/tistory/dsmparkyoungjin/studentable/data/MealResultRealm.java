@@ -10,7 +10,6 @@ public class MealResultRealm extends RealmObject {
 
     private RealmList<MealRealm> list;
 
-
     public MealResultRealm() {
     }
 

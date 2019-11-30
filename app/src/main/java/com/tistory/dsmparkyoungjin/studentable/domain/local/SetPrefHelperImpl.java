@@ -11,6 +11,7 @@ public class SetPrefHelperImpl implements SetPrefHelper {
     private static final String PREFERENCE_NAME = "STUDENTABLE";
 
     private static final String KEY_GOOGLE_AUTH = "GOOGLE_AUTH";
+    private static final String KEY_DEVICE_TOKEN = "DEVICE_TOKEN";
 
     private static final String KEY_SCHOOL_SEARCH = "SCHOOL_SEARCH";
 
@@ -39,8 +40,23 @@ public class SetPrefHelperImpl implements SetPrefHelper {
     }
 
     @Override
+    public String getGoogleAuth() {
+        return mSharedPref.getString(KEY_GOOGLE_AUTH, DEFVALUE_BLANK);
+    }
+
+    @Override
     public void setGoogleAuth(String mGoogleAuth) {
         mSharedPref.edit().putString(KEY_GOOGLE_AUTH, mGoogleAuth).apply();
+    }
+
+    @Override
+    public String getDeviceToken() {
+        return mSharedPref.getString(KEY_DEVICE_TOKEN, DEFVALUE_BLANK);
+    }
+
+    @Override
+    public void setDeviceToken(String mDeviceToken) {
+        mSharedPref.edit().putString(KEY_DEVICE_TOKEN, mDeviceToken).apply();
     }
 
     @Override
