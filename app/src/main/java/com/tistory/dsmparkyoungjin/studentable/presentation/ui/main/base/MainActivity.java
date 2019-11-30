@@ -9,6 +9,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.tistory.dsmparkyoungjin.studentable.R;
 import com.tistory.dsmparkyoungjin.studentable.domain.local.MainPrefHelperImpl;
 import com.tistory.dsmparkyoungjin.studentable.presentation.ui.main.meal.MealFragment;
@@ -35,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     public void replaceFragment(Fragment fragment) {
-        if (fragment instanceof TimeFragment)   mPresenter.setRecentViewTime();
-        else                                    mPresenter.setRecentViewMeal();
+        if (fragment instanceof TimeFragment) mPresenter.setRecentViewTime();
+        else mPresenter.setRecentViewMeal();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_container_main, fragment).commit();
     }
@@ -64,21 +65,27 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     private void initFloatingActionBar() {
-        findViewById(R.id.fab_time).setOnClickListener(
-                v -> replaceFragment(mTimeFragment)
-        );
+        FloatingActionsMenu fam = findViewById(R.id.fab_menu);
 
-        findViewById(R.id.fab_meal).setOnClickListener(
-                v -> replaceFragment(mMealFragment)
-        );
+        findViewById(R.id.fab_time).setOnClickListener(v -> {
+            replaceFragment(mTimeFragment);
+            fam.collapse();
+        });
 
-        findViewById(R.id.fab_setting).setOnClickListener(
-                v -> startActivity(new Intent(this, ResetActivity.class))
-        );
+        findViewById(R.id.fab_meal).setOnClickListener(v -> {
+            replaceFragment(mMealFragment);
+            fam.collapse();
+        });
 
-        findViewById(R.id.fab_notification).setOnClickListener(
-                v -> startActivity(new Intent(this, NoticeActivity.class))
-        );
+        findViewById(R.id.fab_setting).setOnClickListener(v -> {
+            startActivity(new Intent(this, ResetActivity.class));
+            fam.collapse();
+        });
+
+        findViewById(R.id.fab_notification).setOnClickListener(v -> {
+            startActivity(new Intent(this, NoticeActivity.class));
+            fam.collapse();
+        });
     }
 
     private void setRecentView() {
