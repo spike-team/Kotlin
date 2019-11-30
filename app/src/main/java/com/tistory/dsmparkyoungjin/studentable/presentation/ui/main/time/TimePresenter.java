@@ -1,49 +1,44 @@
-package com.tistory.dsmparkyoungjin.studentable.presentation.ui.main.meal;
+package com.tistory.dsmparkyoungjin.studentable.presentation.ui.main.time;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 
-import com.tistory.dsmparkyoungjin.studentable.domain.repository.MealRepository;
-import com.tistory.dsmparkyoungjin.studentable.domain.repository.MealRepositoryImpl;
+import com.tistory.dsmparkyoungjin.studentable.domain.repository.TimeRepository;
+import com.tistory.dsmparkyoungjin.studentable.domain.repository.TimeRepositoryImpl;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+public class TimePresenter implements TimeContract.Presenter {
 
-public class MealPresenter implements MealContract.Presenter {
+    private TimeContract.View mView;
+    private TimeRepository mRepository;
 
-    private MealContract.View mView;
-    private MealRepository mRepository;
-
-    MealPresenter(Context context) {
-        mRepository = new MealRepositoryImpl(context);
+    TimePresenter(Context context) {
+        mRepository = new TimeRepositoryImpl(context);
     }
 
     @Override
-    public void init(MealContract.View view) {
+    public void init(TimeContract.View view) {
         mView = view;
         mView.initView();
-        findMeals();
+        findTimes();
     }
 
     @SuppressLint("CheckResult")
     @Override
-    public void findMeals() {
-        if (mRepository.isExist(getToday())) {
+    public void findTimes() {
+        if(mRepository.isExist()) {
             mView.visibleProgress();
-            mView.setItem(mRepository.getMeals(getToday()).getList());
+            mView.setItem(mRepository.getTimes().getSubjects());
             mView.invisibleProgress();
         } else {
-            mRepository.findMeals(getToday())
+            mRepository.findTimes()
                     .doOnSubscribe(notUsed -> mView.visibleProgress())
                     .doOnTerminate(() -> mView.invisibleProgress())
                     .subscribe(
                             response -> {
                                 switch (response.code()) {
                                     case 200:
-                                        assert response.body() != null;
-                                        mRepository.cache(response.body().date(getToday()));
-                                        mView.setItem(mRepository.getMeals(getToday()).getList());
+                                        mRepository.cache(response.body());
+                                        mView.setItem(mRepository.getTimes().getSubjects());
                                         break;
                                     case 400:
                                         mView.showToastForStrangeData();
@@ -58,9 +53,5 @@ public class MealPresenter implements MealContract.Presenter {
                             error -> mView.showToastForError()
                     );
         }
-    }
-
-    private String getToday() {
-        return new SimpleDateFormat("yyyy-MM", Locale.KOREA).format(new Date()) + "-01";
     }
 }
