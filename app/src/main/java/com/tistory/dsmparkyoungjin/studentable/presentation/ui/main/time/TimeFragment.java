@@ -3,7 +3,6 @@ package com.tistory.dsmparkyoungjin.studentable.presentation.ui.main.time;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +41,12 @@ public class TimeFragment extends Fragment implements TimeContract.View {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.findTimes();
+    }
+
+    @Override
     public void initView() {
     }
 
@@ -58,7 +63,6 @@ public class TimeFragment extends Fragment implements TimeContract.View {
     @SuppressLint("SetTextI18n")
     @Override
     public void setItem(RealmList<String> items) {
-        Log.d("TT", "setItem: 오긴함?");
         TextView[] subjectViews = {
                 mCurrentView.findViewById(R.id.tv_subject_11),
                 mCurrentView.findViewById(R.id.tv_subject_12),
@@ -97,12 +101,14 @@ public class TimeFragment extends Fragment implements TimeContract.View {
                 mCurrentView.findViewById(R.id.tv_subject_57),
         };
 
-        for (int i = 0; i < 5; i++)
-            for (int j = 0; j < 7; j++)
-                subjectViews[i * 7 + j].setText(Html.fromHtml(
-                        "<b>" + Objects.requireNonNull(items.get(i * 7 + j))
-                                .replace("/", "</b><br>"))
-                );
+        int i, j;
+        for (i = 0; i < 5; i++)
+            for (j = 0; j < 7; j++)
+                if (i * 7 + j != 34)
+                    subjectViews[i * 7 + j].setText(Html.fromHtml(
+                            "<b>" + Objects.requireNonNull(items.get(i * 7 + j))
+                                    .replace("/", "</b><br>"))
+                    );
     }
 
     @Override

@@ -46,8 +46,6 @@ public class NoticeActivity extends AppCompatActivity implements NoticeContract.
 
     private void initRecyclerView() {
         ArrayList<NoticeData> dummy = new ArrayList<>();
-        dummy.add(new NoticeData("9월 4일 수요일 1교시", "문학(장보현)이 국사(서현철)로 바뀌었습니다."));
-        dummy.add(new NoticeData("9월 5일 목요일 1교시", "국사(서현철)가 문학(장보현)으로 바뀌었습니다."));
 
         RecyclerView rvNotice = findViewById(R.id.rv_notification);
         NoticeAdapter adapter = new NoticeAdapter(dummy);
