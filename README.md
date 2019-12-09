@@ -27,6 +27,7 @@
 ## Goal
 
 `실제 서비스`
+![실제 서비스를 위한 Repository](https://github.com/parkyoungjin0303/studentable)
 
 `무료 서비스`
 
@@ -46,18 +47,15 @@ design by 박영진
 
 Language: Java
 
-Application Architecture: Clean Architecture
-
 Presenter Architecture: MVP (Model View Presenter)
 
 
 
 Library
 
-- Koin
 - RxJava2
 - Retrofit2
-- Butter Knife
-
-
+- Realm
+- Firebase
+. etc...
 
